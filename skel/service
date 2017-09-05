@@ -1,0 +1,11 @@
+[Unit]
+Description=EWF $NAME Node
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+ExecStart=$SERVICE_EXEC
+
+[Install]
+WantedBy=multi-user.target

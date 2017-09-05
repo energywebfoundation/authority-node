@@ -1,0 +1,10 @@
+
+echo "
+NETWORK_NAME=$CHAIN_NAME
+CHAIN_NODE=$CHAIN_NODE
+PARITY_VERSION=$PARITY_RELEASE
+EXTERNAL_IP=$eip" > .env
+
+echo "[!] Starting Node $CHAIN_NODE in $CHAIN_NAME with Parity $PARITY_RELEASE"
+
+docker-compose up

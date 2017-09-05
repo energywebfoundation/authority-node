@@ -1,0 +1,18 @@
+version: '2.0'
+services:
+
+  node:
+    image: parity/parity:${PARITY_VERSION}
+    command:
+      --config /parity/config/member.toml
+      --nat extip:${EXTERNAL_IP}
+    volumes:
+      - ./config:/parity/config:ro
+      - ./chain:/root/.local/share/io.parity.ethereum/
+    ports:
+      - 8080:8080
+      - 8545:8545
+      - 8546:8546
+      - 8180:8180 
+      - 30304:30303 
+      - 30304:30303/udp
