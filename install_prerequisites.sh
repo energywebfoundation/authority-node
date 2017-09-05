@@ -1,3 +1,5 @@
+USR = $(whoami)
+
 sudo apt-get -y remove docker docker-engine docker.io
 
 sudo apt-get -y update
@@ -12,10 +14,10 @@ sudo apt-get -y install \
     curl \
     software-properties-common
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/$USR/gpg | sudo apt-key add -
 
 sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   "deb [arch=amd64] https://download.docker.com/linux/$USR \
    $(lsb_release -cs) \
    stable"
 
@@ -23,10 +25,10 @@ sudo apt-get -y update
 
 sudo apt-get -y install docker-ce docker-compose
 
-sudo adduser ubuntu docker
+sudo adduser $USR docker
 
 sudo systemctl enable docker
 
-sudo passwd ubuntu
+sudo passwd $USR
 
-exec sudo su -l ubuntu
+exec sudo su -l $USR
