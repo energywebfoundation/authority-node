@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+XPATH=$(pwd)
+
 sudo apt-get -y remove docker docker-engine docker.io
 
 sudo apt-get -y update
@@ -37,6 +39,6 @@ sudo systemctl enable docker
 
 su ${USER_NAME}
 
-cd /home/${USER_NAME}
+cd ${XPATH}
 
-bash /home/${USER_NAME}/ewf-create-authority.sh
+bash ./ewf-create-authority.sh
