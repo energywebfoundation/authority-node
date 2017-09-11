@@ -31,9 +31,9 @@ bane() {
     sudo rm -fv /etc/systemd/system/${SERVICE_NAME}
     sudo systemctl daemon-reload
     sudo systemctl reset-failed
-    
+
     echo "${GREEN}[.] Crushing old chain${RESET}"
-    rm -rfv ${CHAIN_NAME}
+    sudo rm -rfv ${CHAIN_NAME}
 }
 
 summon_undead() {
