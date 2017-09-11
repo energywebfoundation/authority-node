@@ -35,4 +35,4 @@ sudo adduser ${USER_NAME} docker
 
 sudo systemctl enable docker
 
-exec sudo su -l ${USER_NAME}
+su ${USER_NAME}
