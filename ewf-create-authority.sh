@@ -25,15 +25,15 @@ RESET=`tput sgr0`
 
 
 bane() {
-    echo "${GREEN}[.] Crushing old chain${RESET}"
-    rm -rfv ${CHAIN_NAME}
-
     echo "${GREEN}[.] Unregistered old daemon service${RESET}"
     sudo systemctl stop ${SERVICE_NAME}
     sudo systemctl disable ${SERVICE_NAME}
     sudo rm -fv /etc/systemd/system/${SERVICE_NAME}
     sudo systemctl daemon-reload
     sudo systemctl reset-failed
+    
+    echo "${GREEN}[.] Crushing old chain${RESET}"
+    rm -rfv ${CHAIN_NAME}
 }
 
 summon_undead() {
