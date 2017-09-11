@@ -39,4 +39,4 @@ su ${USER_NAME}
 
 cd /home/${USER_NAME}
 
-bash ewf-create-authority
+bash /home/${USER_NAME}/ewf-create-authority.sh
