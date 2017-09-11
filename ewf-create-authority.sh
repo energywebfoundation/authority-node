@@ -111,15 +111,12 @@ deploy() {
     echo "${RED}[!] Docker will download image.${RESET}"
     docker pull parity/parity:${PARITY_RELEASE}
 
-    # Minting Authority
-    add_miner
+    # Create Wallet account
+    create_acc
 
     # Create file to enable autonomous service
     create_pwd_file
 
-    # Create Wallet account
-    create_acc
-    
     # Create start script
     echo "
     CHAIN_NAME=${CHAIN_NAME}
@@ -127,6 +124,9 @@ deploy() {
     PARITY_RELEASE=${PARITY_RELEASE}" > ${CHAIN_NAME}/ewf-run.sh
     cat skel/init.sh >> ${CHAIN_NAME}/ewf-run.sh
     cat skel/run.sh >> ${CHAIN_NAME}/ewf-run.sh
+
+    # Minting Authority
+    add_miner
 
     # Autostart Daemon
     register_service
