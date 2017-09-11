@@ -41,4 +41,4 @@ su ${USER_NAME}
 
 cd ${XPATH}
 
-bash ./ewf-create-authority.sh
+/bin/bash ${XPATH}/ewf-create-authority.sh
