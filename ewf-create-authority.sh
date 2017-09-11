@@ -9,13 +9,13 @@ CHAIN_NODE="0"
 PARITY_RELEASE="nightly"
 
 # environmental-awareness
-WALLET_PWD=$(pwd)
+WORKING_DIR=$(pwd)
 EXT_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 USER_NAME=$(whoami)
 
 # auto start and daemon
-SERVICE_NAME="ewf-${NAME}@$USER_NAME.service"
-SERVICE_EXEC="/bin/bash $WALLET_PWD/${NAME}/ewf-run.sh"
+SERVICE_NAME="ewf-${NAME}@${USER_NAME}.service"
+SERVICE_EXEC="/bin/bash ${WORKING_DIR}/${NAME}/ewf-run.sh"
 
 # making it look cool
 RED=`tput setaf 1`
@@ -51,16 +51,17 @@ summon_undead() {
 add_miner() {
     # Create new wallet key
     echo "${RED}[!] Creating your Wallet Account${RESET}"
+    echo "${RED}[!] It is required to type it 3 times during this process${RESET}"
     docker run -ti -v ${WORKING_DIR}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account new
     # Get signer key
-    PK_SIG=$(docker run -ti -v ${WALLET_PWD}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
+    PK_SIG=$(docker run -ti -v ${WORKING_DIR}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
     # Add it to parity configuration
     echo "engine_signer = \"${PK_SIG::42}\"" >> ${CHAIN_NAME}/config/authority.toml
 }
 
 create_pwd_file() {
     # Read Password
-    echo "${GREEN}Type your Wallet password to sign blocks:${RESET}"
+    echo "${GREEN}Type your Wallet password one more time:${RESET}"
     read -s password
     echo ${password} > ${CHAIN_NAME}/.secret
     echo ""
