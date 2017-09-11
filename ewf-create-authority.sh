@@ -48,15 +48,11 @@ summon_undead() {
     cp -v ./skel/authority.yml ${CHAIN_NAME}/docker-compose.yml
 }
 
-add_miner() {
+create_acc() {
     # Create new wallet key
     echo "${RED}[!] Creating your Wallet Account${RESET}"
     echo "${RED}[!] It is required to type it 3 times during this process${RESET}"
     docker run -ti -v ${WORKING_DIR}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account new
-    # Get signer key
-    PK_SIG=$(docker run -ti -v ${WORKING_DIR}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
-    # Add it to parity configuration
-    echo "engine_signer = \"${PK_SIG::42}\"" >> ${CHAIN_NAME}/config/authority.toml
 }
 
 create_pwd_file() {
@@ -65,6 +61,13 @@ create_pwd_file() {
     read -s password
     echo ${password} > ${CHAIN_NAME}/.secret
     echo ""
+}
+
+add_miner() {
+    # Get signer key
+    PK_SIG=$(docker run -ti -v ${WORKING_DIR}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
+    # Add it to parity configuration
+    echo "engine_signer = \"${PK_SIG::42}\"" >> ${CHAIN_NAME}/config/authority.toml
 }
 
 register_service() {
@@ -114,6 +117,9 @@ deploy() {
     # Create file to enable autonomous service
     create_pwd_file
 
+    # Create Wallet account
+    create_acc
+    
     # Create start script
     echo "
     CHAIN_NAME=${CHAIN_NAME}
