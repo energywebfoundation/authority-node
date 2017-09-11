@@ -56,7 +56,7 @@ add_miner() {
     PK_SIG=$(docker run -ti -v ${WALLET_PWD}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
     # Add it to parity configuration
     echo "engine_signer = \"${PK_SIG::42}\"" >> ${CHAIN_NAME}/config/authority.toml
-
+}
 
 create_pwd_file() {
     # Read Password
