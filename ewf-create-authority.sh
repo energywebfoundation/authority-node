@@ -15,7 +15,7 @@ USER_NAME=$(whoami)
 
 # auto start and daemon
 SERVICE_NAME="ewf-${NAME}@${USER_NAME}.service"
-SERVICE_EXEC="/bin/bash ${WORKING_DIR}/${NAME}/ewf-run.sh"
+SERVICE_EXEC="/bin/bash ${WORKING_DIR}/${CHAIN_NAME}/ewf-run.sh"
 
 # making it look cool
 RED=`tput setaf 1`
