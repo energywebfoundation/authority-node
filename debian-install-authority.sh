@@ -47,7 +47,6 @@ sudo add-apt-repository \
    stable"
 sudo apt-get update
 sudo apt-get -y install docker-ce docker-compose
-exec sg docker newgrp `id -gn`
 sudo systemctl enable docker
 cd ${XPATH}
 }
@@ -161,6 +160,7 @@ PARITY_RELEASE=${PARITY_RELEASE}" > ${CHAIN_NAME}/ewf-run.sh
     register_service
     echo "${GREEN}[.] Magic done! The service is registered as ${BLUE}${SERVICE_NAME}${RESET}"
     echo "${GREEN}Type: ${RED}sudo systemctl status ewf-authority@${USER_NAME}.service ${GREEN} to check status.${RESET}"
+    exec sg docker newgrp `id -gn`
 }
 
 print_banner() {
