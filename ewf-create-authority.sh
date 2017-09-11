@@ -12,10 +12,11 @@ PARITY_RELEASE="nightly"
 WORKING_DIR=$(pwd)
 EXT_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 USER_NAME=$(whoami)
+XPATH="${WORKING_DIR}/${CHAIN_NAME}"
 
 # auto start and daemon
 SERVICE_NAME="ewf-${NAME}@${USER_NAME}.service"
-SERVICE_EXEC="/bin/bash ${WORKING_DIR}/${CHAIN_NAME}/ewf-run.sh"
+SERVICE_EXEC="/bin/bash ${XPATH}/ewf-run.sh"
 
 # making it look cool
 RED=`tput setaf 1`
@@ -52,7 +53,7 @@ create_acc() {
     # Create new wallet key
     echo "${RED}[!] Creating your Wallet Account${RESET}"
     echo "${RED}[!] It is required to type it 3 times during this process${RESET}"
-    docker run -ti -v ${WORKING_DIR}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account new
+    docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account new
 }
 
 create_pwd_file() {
@@ -119,6 +120,7 @@ deploy() {
 
     # Create start script
     echo "
+    XPATH=${XPATH}
     CHAIN_NAME=${CHAIN_NAME}
     CHAIN_NODE=${CHAIN_NODE}
     PARITY_RELEASE=${PARITY_RELEASE}" > ${CHAIN_NAME}/ewf-run.sh
