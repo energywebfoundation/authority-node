@@ -133,6 +133,7 @@ deploy() {
     # Autostart Daemon
     register_service
     echo "${GREEN}[.] Magic done! The service is registered as ${BLUE}${SERVICE_NAME}${RESET}"
+    echo "${GREEN}Type: ${RED}sudo systemctl status ewf-authority@${USER_NAME}.service ${GREEN} to check status.${RESET}"
 }
 
 print_banner() {
