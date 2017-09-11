@@ -44,7 +44,8 @@ summon_undead() {
     mkdir -v ${CHAIN_NAME}/chain/keys
     mkdir -v ${CHAIN_NAME}/chain/keys/ethereum
     cp -v ./config/* ${CHAIN_NAME}/config/
-    cp -v ./skel/bootstrap.yml ${CHAIN_NAME}/docker-compose.yml
+    # Authority docker compose
+    cp -v ./skel/authority.yml ${CHAIN_NAME}/docker-compose.yml
 }
 
 add_miner() {
@@ -66,6 +67,8 @@ create_pwd_file() {
 }
 
 register_service() {
+
+    echo "${GREEN}[.] Service register for ${SERVICE_NAME}${RESET}"
     cat
 "
 [Unit]
@@ -94,7 +97,7 @@ WantedBy=multi-user.target
 deploy() {
     print_banner
 
-    echo "${GREEN}[.] Deploying \"${CHAIN_NAME}\" ${RED}BOOTSTRAP ${GREEN}node number ${CHAIN_NODE}"
+    echo "${GREEN}[.] Deploying \"${CHAIN_NAME}\"${RED} AUTHORITY ${GREEN}node number ${CHAIN_NODE}"
     # Delete old folder and unregister service
     bane
     # Create base structure
