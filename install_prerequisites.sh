@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-USER_NAME=$(whoami)
-LINUX=$(uname -r)
-RELEASE=$(lsb_release -cs)
 
 sudo apt-get -y remove docker docker-engine docker.io
 
 sudo apt-get -y update
+
+LINUX=$(uname -r)
 
 sudo apt-get -y install \
     linux-image-extra-${LINUX} \
@@ -19,6 +18,8 @@ sudo apt-get -y install \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
+RELEASE=$(lsb_release -cs)
+
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    ${RELEASE} \
@@ -27,6 +28,8 @@ sudo add-apt-repository \
 sudo apt-get update
 
 sudo apt-get -y install docker-ce docker-compose
+
+USER_NAME=$(whoami)
 
 sudo adduser ${USER_NAME} docker
 
