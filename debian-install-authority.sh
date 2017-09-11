@@ -33,11 +33,13 @@ sudo apt-get -y install docker-ce docker-compose
 
 USER_NAME=$(whoami)
 
-sudo adduser ${USER_NAME} docker
+exec sg docker newgrp `id -gn`
+
+#sudo adduser ${USER_NAME} docker
 
 sudo systemctl enable docker
 
-su ${USER_NAME}
+#su - ${USER_NAME}
 
 cd ${XPATH}
 
