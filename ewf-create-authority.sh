@@ -5,14 +5,13 @@ CHAIN_NODE=""
 PARITY_RELEASE="nightly"
 ETHSTATS=0
 
-pwd=$(pwd)
+WORKING_DIR=$(pwd)
 eip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
 BLUE=`tput setaf 4`
 RESET=`tput sgr0`
-
 
 help()  { 
   echo "
@@ -28,13 +27,13 @@ help()  {
 deploy() {
     echo "${GREEN}[.] Deploying \"$CHAIN_NAME\" node number $CHAIN_NODE"
     echo "${GREEN}[.] Crushing old chain${RESET}"
-    rm -rfv $CHAIN_NAME
+    rm -rfv ${CHAIN_NAME}
     echo "${GREEN}[.] Raising skeleton${RESET}"
-    mkdir -v $CHAIN_NAME
-    mkdir -v $CHAIN_NAME/chain
-    mkdir -v $CHAIN_NAME/config
-    cp -v ./config/* $CHAIN_NAME/config/
-    cp -v ./skel/authority.yml $CHAIN_NAME/docker-compose.yml
+    mkdir -v ${CHAIN_NAME}
+    mkdir -v ${CHAIN_NAME}/chain
+    mkdir -v ${CHAIN_NAME}/config
+    cp -v ./config/* ${CHAIN_NAME}/config/
+    cp -v ./skel/authority.yml ${CHAIN_NAME}/docker-compose.yml
 
     echo "${BLUE}
     *********************************************************************************
@@ -44,26 +43,26 @@ deploy() {
     *********************************************************************************
     "
     echo "${RED}[!] Docker will download image.${RESET}"
-    docker pull parity/parity:$PARITY_RELEASE
+    docker pull parity/parity:${PARITY_RELEASE}
 
     echo "${RED}[!] Creating your Blockchain Account${RESET}"
-    docker run -ti -v $pwd/$CHAIN_NAME/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:$PARITY_RELEASE account new
+    docker run -ti -v ${WORKING_DIR}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account new
 
-    public_key=$(docker run -ti -v $pwd/$CHAIN_NAME/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:$PARITY_RELEASE account list)
+    PK=$(docker run -ti -v ${WORKING_DIR}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
 
-    echo "engine_signer = \"${public_key::42}\"" >> $CHAIN_NAME/config/authority.toml
+    echo "engine_signer=\"${PK::42}\"" >> ${CHAIN_NAME}/config/authority.toml
 
     echo "
     CHAIN_NAME=$CHAIN_NAME
     CHAIN_NODE=$CHAIN_NODE
-    PARITY_RELEASE=$PARITY_RELEASE" > $CHAIN_NAME/ewf-run.sh
-    cat skel/init.sh >> $CHAIN_NAME/ewf-run.sh
-    cat skel/pwd.sh >> $CHAIN_NAME/ewf-run.sh
-    cat skel/run.sh >> $CHAIN_NAME/ewf-run.sh
+    PARITY_RELEASE=$PARITY_RELEASE" > ${CHAIN_NAME}/ewf-run.sh
+    cat skel/init.sh >> ${CHAIN_NAME}/ewf-run.sh
+    cat skel/pwd.sh >> ${CHAIN_NAME}/ewf-run.sh
+    cat skel/run.sh >> ${CHAIN_NAME}/ewf-run.sh
 
 
     echo "${GREEN}[.] Magic done! Now please run:${RESET} 
-    ${BLUE}cd $CHAIN_NAME
+    ${BLUE}cd ${CHAIN_NAME}
     source ewf-run.sh${RESET}"
 }
 
@@ -93,7 +92,7 @@ done
 
 echo "${RED}
     *****************************************************************
-    *   Energy Web Foundation Validator Node Deployer v.$VERSION        *
+    *   Energy Web Foundation Validator Node Deployer v.${VERSION}        *
     *               http://energyweb.org/                           *
     *                                                               *
     *            Copyright © 2017 All rights reserved.              *
