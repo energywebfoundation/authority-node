@@ -69,8 +69,7 @@ create_pwd_file() {
 register_service() {
 
     echo "${GREEN}[.] Service register for ${SERVICE_NAME}${RESET}"
-    echo
-"
+    echo "
 [Unit]
 Description=EWF ${NAME} Node
 After=network.target
