@@ -30,10 +30,11 @@ sudo apt-get -y install \
 sudo apt-get -y install \
     apt-transport-https \
     ca-certificates \
-    curl \
-    gnupg2 \
-    software-properties-common \
-    python-software-properties
+    curl
+
+sudo apt-get -y install gnupg2
+sudo apt-get -y install python-software-properties
+sudo apt-get -y install software-properties-common
 
 OS_NAME=$(. /etc/os-release; echo "$ID")
 RELEASE=$(lsb_release -cs)
