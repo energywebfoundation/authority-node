@@ -40,10 +40,10 @@ RELEASE=$(lsb_release -cs)
 
 curl -fsSL https://download.docker.com/linux/${OS_NAME}/gpg | sudo apt-key add -
 
-$ sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/${OS_NAME} \
-   ${RELEASE} \
-   stable"
+sudo add-apt-repository \
+"deb [arch=amd64] https://download.docker.com/linux/${OS_NAME} \
+${RELEASE} \
+stable"
 
 sudo apt-get update
 
