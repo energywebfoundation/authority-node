@@ -20,11 +20,11 @@ then
         git add .
         git add -u
         git commit -m "${DATE}"
-        echo "${RED}[!] ${GREEN}Commit in fallbacks branch created at ${BLUE}${DATE}${RESET}"
+        echo "${BLUE}[.] ${GREEN}Commit in fallbacks branch created at ${BLUE}${DATE}${RESET}"
 
         git checkout master
         git merge FETCH_HEAD
-        echo "${RED}[!] ${GREEN}Done updating.${RESET}"
+        echo "${BLUE}[.] ${GREEN}Done updating.${RESET}"
 else
-        echo "no updates available"
+        echo "${RED}[.] ${GREEN}No updates.${RESET}"
 fi
