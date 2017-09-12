@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# making it look cool
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+BLUE=`tput setaf 4`
+RESET=`tput sgr0`
+
 print_banner() {
 echo "${RED}
     *****************************************************************
@@ -32,6 +38,7 @@ sudo apt-get -y install \
     ca-certificates \
     curl
 
+sudo apt-get install -y dnsutils
 sudo apt-get -y install gnupg2
 sudo apt-get -y install python-software-properties
 sudo apt-get -y install software-properties-common
