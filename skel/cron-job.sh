@@ -26,7 +26,7 @@ then
         git checkout master
         git merge FETCH_HEAD
         echo "${RED}[!] ${GREEN}Running chain updater script.${RESET}"
-        /bin/bash ${XPATH}/updater.sh --service-name ${SERVICE_NAME}
+        /bin/bash ${INSTALLER_PATH}/updater.sh --service-name ${SERVICE_NAME} --chain-path ${XPATH}
         echo "${BLUE}[.] ${GREEN}Done updating.${RESET}"
 else
         echo "${RED}[.] ${GREEN}No updates.${RESET}"
