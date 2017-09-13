@@ -12,10 +12,10 @@ PARITY_RELEASE="nightly"
 WORKING_DIR=$(pwd)
 EXT_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 USER_NAME=$(whoami)
-XPATH="${WORKING_DIR}/${CHAIN_NAME}"
+XPATH="${WORKING_DIR}/../${CHAIN_NAME}"
 
 # auto start and daemon
-SERVICE_NAME="ewf-${NAME}@${USER_NAME}.service"
+SERVICE_NAME="ewf-tobalaba-${NAME}@${USER_NAME}.service"
 SERVICE_EXEC="/bin/bash ${XPATH}/ewf-run.sh"
 
 # making it look cool
@@ -34,19 +34,19 @@ bane() {
     sudo systemctl reset-failed
 
     echo "${GREEN}[.] Crushing old chain${RESET}"
-    sudo rm -rfv ${CHAIN_NAME}
+    sudo rm -rfv ${XPATH}
 }
 
 summon_undead() {
     echo "${GREEN}[.] Raising skeleton${RESET}"
-    mkdir -v ${CHAIN_NAME}
-    mkdir -v ${CHAIN_NAME}/config
-    mkdir -v ${CHAIN_NAME}/chain
-    mkdir -v ${CHAIN_NAME}/chain/keys
-    mkdir -v ${CHAIN_NAME}/chain/keys/ethereum
-    cp -v ./config/* ${CHAIN_NAME}/config/
+    mkdir -v ${XPATH}
+    mkdir -v ${XPATH}/config
+    mkdir -v ${XPATH}/chain
+    mkdir -v ${XPATH}/chain/keys
+    mkdir -v ${XPATH}/chain/keys/ethereum
+    cp -v ./config/* ${XPATH}/config/
     # Authority docker compose
-    cp -v ./skel/authority.yml ${CHAIN_NAME}/docker-compose.yml
+    cp -v ./skel/authority.yml ${XPATH}/docker-compose.yml
 }
 
 create_acc() {
@@ -60,15 +60,15 @@ create_pwd_file() {
     # Read Password
     echo "${GREEN}Type your Wallet password one more time:${RESET}"
     read -s password
-    echo ${password} > ${CHAIN_NAME}/.secret
+    echo ${password} > ${XPATH}/.secret
     echo ""
 }
 
 add_miner() {
     # Get signer key
-    PK_SIG=$(docker run -ti -v ${WORKING_DIR}/${CHAIN_NAME}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
+    PK_SIG=$(docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
     # Add it to parity configuration
-    echo "engine_signer = \"${PK_SIG::42}\"" >> ${CHAIN_NAME}/config/authority.toml
+    echo "engine_signer = \"${PK_SIG::42}\"" >> ${XPATH}/config/authority.toml
 }
 
 register_service() {
@@ -123,9 +123,9 @@ deploy() {
     XPATH=${XPATH}
     CHAIN_NAME=${CHAIN_NAME}
     CHAIN_NODE=${CHAIN_NODE}
-    PARITY_RELEASE=${PARITY_RELEASE}" > ${CHAIN_NAME}/ewf-run.sh
-    cat skel/init.sh >> ${CHAIN_NAME}/ewf-run.sh
-    cat skel/run.sh >> ${CHAIN_NAME}/ewf-run.sh
+    PARITY_RELEASE=${PARITY_RELEASE}" > ${XPATH}/ewf-run.sh
+    cat skel/init.sh >> ${XPATH}/ewf-run.sh
+    cat skel/run.sh >> ${XPATH}/ewf-run.sh
 
     # Minting Authority
     add_miner
@@ -133,7 +133,7 @@ deploy() {
     # Autostart Daemon
     register_service
     echo "${GREEN}[.] Magic done! The service is registered as ${BLUE}${SERVICE_NAME}${RESET}"
-    echo "${GREEN}Type: ${RED}sudo systemctl status ewf-authority@${USER_NAME}.service ${GREEN} to check status.${RESET}"
+    echo "${GREEN}Type: ${RED}systemctl status ewf-tobalaba-authority@${USER_NAME}.service ${GREEN} to check status.${RESET}"
 }
 
 print_banner() {

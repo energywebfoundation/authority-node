@@ -17,9 +17,14 @@ Energy Web Foundation's Tobalaba network is a PoA blockchain created for testing
 Enter new UNIX password:
 
 # adduser ewf sudo
+
 # su ewf
 
 $ cd
+
+$ mkdir tobalaba
+
+$ cd tobalaba
 
 $ git clone https://github.com/slockit/ewf-tobalaba.git
 
@@ -35,7 +40,7 @@ Type password: (wallet)
 Repeat password: (wallet)
 Type your Wallet password one more time:  (wallet)
 
-$ systemctl status ewf-authority@ewf.service
+$ systemctl status ewf-tobalaba-authority@ewf.service
 ```
 ### Debian
 ```
@@ -48,9 +53,14 @@ Password: (root)
 Enter new UNIX password:
 
 # adduser ewf sudo
+
 # su ewf
 
 $ cd
+
+$ mkdir tobalaba
+
+$ cd tobalaba
 
 $ git clone https://github.com/slockit/ewf-tobalaba.git
 
@@ -66,5 +76,5 @@ Type password: (wallet)
 Repeat password: (wallet)
 Type your Wallet password one more time:  (wallet)
 
-$ systemctl status ewf-authority@ewf.service
+$ systemctl status ewf-tobalaba-authority@ewf.service
 ```
