@@ -119,6 +119,9 @@ SERVICE_NAME=${SERVICE_NAME}
     UPDATER_CRON_JOB="*/5 * * * * ${UPDATER_PATH}"
     cat <(fgrep -i -v "${UPDATER_PATH}" <(crontab -l)) <(echo "${UPDATER_CRON_JOB}") | crontab -
     crontab -l
+
+    git config --global user.email "ewf-updater@ewf.org"
+    git config --global user.name "ewf-updater"
 }
 
 deploy() {
