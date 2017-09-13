@@ -1,30 +1,14 @@
 #!/usr/bin/env bash
 
-RED=`tput setaf 1`
-GREEN=`tput setaf 2`
-BLUE=`tput setaf 4`
-RESET=`tput sgr0`
+# Command command line parameters
+while [ "$1" != "" ]; do
+    case $1 in
+        -n | --service-name )   shift
+                                SERVICE_NAME=$1
+                                ;;
+        * )                    	return
+    esac
+    shift
+done
 
-# fetch changes, git stores them in FETCH_HEAD
-git fetch
-
-DATE=$(date)
-
-# check for remote changes in origin repository
-newUpdatesAvailable=$(git diff HEAD FETCH_HEAD)
-if [ "${newUpdatesAvailable}" != "" ]
-then
-        echo "${RED}[!] ${GREEN}Update available!${RESET}"
-        # create the fallback
-        git checkout -b fallbacks
-        git add .
-        git add -u
-        git commit -m "${DATE}"
-        echo "${BLUE}[.] ${GREEN}Commit in fallbacks branch created at ${BLUE}${DATE}${RESET}"
-
-        git checkout master
-        git merge FETCH_HEAD
-        echo "${BLUE}[.] ${GREEN}Done updating.${RESET}"
-else
-        echo "${RED}[.] ${GREEN}No updates.${RESET}"
-fi
+sudo systemctl restart ${SERVICE_NAME}

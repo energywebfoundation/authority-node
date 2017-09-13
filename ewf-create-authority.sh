@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # release name
 NAME="authority"
 CHAIN_NAME="${NAME}_node"
@@ -17,6 +17,10 @@ XPATH="${WORKING_DIR}/../${CHAIN_NAME}"
 # auto start and daemon
 SERVICE_NAME="ewf-tobalaba-${NAME}@${USER_NAME}.service"
 SERVICE_EXEC="/bin/bash ${XPATH}/ewf-run.sh"
+
+# updater
+UPDATER_NAME="ewf-tobalaba-updater.sh"
+UPDATER_PATH="${XPATH}/${UPDATER_NAME}"
 
 # making it look cool
 RED=`tput setaf 1`
@@ -98,6 +102,22 @@ WantedBy=multi-user.target
     sudo systemctl start ${SERVICE_NAME}
 }
 
+cron_updater() {
+
+    echo "${GREEN}[.] Adding job to cron table.${RESET}"
+    echo "#!/usr/bin/env bash
+
+XPATH=${XPATH}
+SERVICE_NAME=${SERVICE_NAME}
+" > ./${UPDATER_NAME}
+
+    cat ./skel/cron-job.sh >> ./${UPDATER_NAME}
+    mv ./${UPDATER_NAME} ${XPATH}/
+
+    UPDATER_CRON_JOB="*/5 * * * * ${UPDATER_PATH}"
+    cat <(fgrep -i -v "${UPDATER_PATH}" <(crontab -l)) <(echo "${UPDATER_CRON_JOB}") | crontab -
+}
+
 deploy() {
     print_banner
 
@@ -132,6 +152,10 @@ deploy() {
 
     # Autostart Daemon
     register_service
+
+    # Cron job updater
+    cron_updater
+
     echo "${GREEN}[.] Magic done! The service is registered as ${BLUE}${SERVICE_NAME}${RESET}"
     echo "${GREEN}Type: ${RED}systemctl status ewf-tobalaba-authority@${USER_NAME}.service ${GREEN} to check status.${RESET}"
 }
