@@ -113,9 +113,11 @@ SERVICE_NAME=${SERVICE_NAME}
 
     cat ./skel/cron-job.sh >> ./${UPDATER_NAME}
     mv ./${UPDATER_NAME} ${XPATH}/
+    chmod +x ${UPDATER_PATH}
 
     UPDATER_CRON_JOB="*/5 * * * * ${UPDATER_PATH}"
     cat <(fgrep -i -v "${UPDATER_PATH}" <(crontab -l)) <(echo "${UPDATER_CRON_JOB}") | crontab -
+    crontab -l
 }
 
 deploy() {
