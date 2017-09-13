@@ -4,7 +4,7 @@ GREEN=`tput setaf 2`
 BLUE=`tput setaf 4`
 RESET=`tput sgr0`
 
-cd ${XPATH}
+cd ${INSTALLER_PATH}
 
 # fetch changes, git stores them in FETCH_HEAD
 git fetch

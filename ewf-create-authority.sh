@@ -107,6 +107,7 @@ cron_updater() {
     echo "${GREEN}[.] Adding job to cron table.${RESET}"
     echo "#!/usr/bin/env bash
 
+INSTALLER_PATH=${WORKING_DIR}
 XPATH=${XPATH}
 SERVICE_NAME=${SERVICE_NAME}
 " > ./${UPDATER_NAME}
