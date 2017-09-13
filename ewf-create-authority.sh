@@ -117,7 +117,7 @@ SERVICE_NAME=${SERVICE_NAME}
     chmod +x ${UPDATER_PATH}
 
     UPDATER_CRON_JOB="*/5 * * * * ${UPDATER_PATH}"
-    cat <(fgrep -i -v "${UPDATER_PATH}" <(crontab -l)) <(echo "${UPDATER_CRON_JOB}") | crontab -
+    cat <(fgrep -i -v "${UPDATER_PATH}" <(sudo crontab -l)) <(echo "${UPDATER_CRON_JOB}") | sudo crontab -
     crontab -l
 
     git config --global user.email "ewf-updater@ewf.org"
