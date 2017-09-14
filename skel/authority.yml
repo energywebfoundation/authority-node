@@ -6,6 +6,7 @@ services:
     command:
       --config /parity/config/authority.toml
       --nat extip:${EXTERNAL_IP}
+      --gas-floor-target 8000000
     volumes:
       - ./config:/parity/config:ro
       - ./chain:/root/.local/share/io.parity.ethereum/
