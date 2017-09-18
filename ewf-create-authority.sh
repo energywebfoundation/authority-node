@@ -73,6 +73,8 @@ add_miner() {
     PK_SIG=$(docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
     # Add it to parity configuration
     echo "engine_signer = \"${PK_SIG::42}\"" >> ${XPATH}/config/authority.toml
+    # copy keys from ethereum to Tobalaba to make parity nightly happy
+    sudo cp -r ${XPATH}/chain/keys/ehtereum/* ${XPATH}/chain/keys/Tobalaba/
 }
 
 register_service() {
@@ -161,6 +163,9 @@ deploy() {
 
     # Cron job updater
     cron_updater
+
+    # refresh access
+    sudo chown ${USER_NAME}:${USER_NAME} ${XPATH}/*
 
     echo "${GREEN}[.] Magic done! The service is registered as ${BLUE}${SERVICE_NAME}${RESET}"
     echo "${GREEN}Type: ${RED}systemctl status ewf-tobalaba-authority@${USER_NAME}.service ${GREEN} to check status.${RESET}"
