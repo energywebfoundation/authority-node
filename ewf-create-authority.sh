@@ -74,7 +74,7 @@ add_miner() {
     # Add it to parity configuration
     echo "engine_signer = \"${PK_SIG::42}\"" >> ${XPATH}/config/authority.toml
     # copy keys from ethereum to Tobalaba to make parity nightly happy
-    sudo cp -r ${XPATH}/chain/keys/ehtereum/* ${XPATH}/chain/keys/Tobalaba/
+    sudo cp -r ${XPATH}/chain/keys/ethereum/* ${XPATH}/chain/keys/Tobalaba/
 }
 
 register_service() {
