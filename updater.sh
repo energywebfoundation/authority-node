@@ -16,6 +16,6 @@ done
 
 # mv ../authority_node/chain/keys/ethereum ../authority_node/chain/keys/Tobalaba
 # cp ./skel/authority.yml ../authority_node/docker-compose.yml
-cp ./config/chain.json ../authority_node/config/chain.json
-sudo systemctl restart ${SERVICE_NAME}
+# cp ./config/chain.json ../authority_node/config/chain.json
+# sudo systemctl restart ${SERVICE_NAME}
 echo "$(date)" > ${CHAIN_PATH}/latest_update
