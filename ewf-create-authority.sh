@@ -47,7 +47,6 @@ summon_undead() {
     mkdir -v ${XPATH}/config
     mkdir -v ${XPATH}/chain
     mkdir -v ${XPATH}/chain/keys
-    mkdir -v ${XPATH}/chain/keys/ethereum
     cp -v ./config/* ${XPATH}/config/
     # Authority docker compose
     cp -v ./skel/authority.yml ${XPATH}/docker-compose.yml
