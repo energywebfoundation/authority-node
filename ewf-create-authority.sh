@@ -57,7 +57,7 @@ create_acc() {
     # Create new wallet key
     echo "${RED}[!] Creating your Wallet Account${RESET}"
     echo "${RED}[!] It is required to type it 3 times during this process${RESET}"
-    docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account new
+    docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ -v ${XPATH}/config:/parity/config:ro parity/parity:${PARITY_RELEASE} --chain /parity/config/chain.json account new
 }
 
 create_pwd_file() {
@@ -73,9 +73,6 @@ add_miner() {
     PK_SIG=$(docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
     # Add it to parity configuration
     echo "engine_signer = \"${PK_SIG::42}\"" >> ${XPATH}/config/authority.toml
-    # copy keys from ethereum to Tobalaba to make parity nightly happy
-    sudo mkdir ${XPATH}/chain/keys/Tobalaba
-    sudo cp ${XPATH}/chain/keys/ethereum/UTC* ${XPATH}/chain/keys/Tobalaba/
 }
 
 register_service() {
