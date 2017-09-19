@@ -52,7 +52,7 @@ Type password: (wallet)
 Repeat password: (wallet)
 Type your Wallet password one more time:  (wallet)
 ```
-Finally test the service status, check if active and read the logs to guarantee it has connected peers. Type `q` to quit the log.
+At this point, please note down the public key that is shown. Finally test the service status, check if active and read the logs to guarantee it has connected peers. Type `q` to quit the log.
 ```
 $ systemctl status ewf-tobalaba-authority@ewf.service
 ...
@@ -104,7 +104,7 @@ Type password: (wallet)
 Repeat password: (wallet)
 Type your Wallet password one more time:  (wallet)
 ```
-Finally test the service status, check if active and read the logs to guarantee it has connected peers. Type `q` to quit the log.
+At this point, please note down the public key that is shown. Finally test the service status, check if active and read the logs to guarantee it has connected peers. Type `q` to quit the log.
 ```
 $ systemctl status ewf-tobalaba-authority@ewf.service
 ...
@@ -115,3 +115,13 @@ Please read the register authority node section.
 
 ### Register Authority Node
 After the installation please send the public key address of the installed wallet and enode address to EWF members to register the node as an authority in the network.
+
+To note down the enode address, run
+```
+docker ps
+```
+and note down the docker id of the parity process. Then run
+```
+docker logs <id of docker process>
+```
+and note down the enode shown in the logs.
