@@ -57,7 +57,7 @@ create_acc() {
     # Create new wallet key
     echo "${RED}[!] Creating your Wallet Account${RESET}"
     echo "${RED}[!] It is required to type it 3 times during this process${RESET}"
-    docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account new --chain ${XPATH}/config/chain.json
+    docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} --chain ${XPATH}/config/chain.json account new
 }
 
 create_pwd_file() {
