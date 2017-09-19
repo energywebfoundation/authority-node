@@ -69,7 +69,7 @@ create_pwd_file() {
 
 add_miner() {
     # Get signer key
-    PK_SIG=$(docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} --chain /parity/config/chain.json account list)
+    PK_SIG=$(docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ -v ${XPATH}/config:/parity/config:ro parity/parity:${PARITY_RELEASE} --chain /parity/config/chain.json account list)
     # Add it to parity configuration
     echo "engine_signer = \"${PK_SIG::42}\"" >> ${XPATH}/config/authority.toml
 }
