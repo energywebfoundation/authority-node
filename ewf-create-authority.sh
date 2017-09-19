@@ -47,7 +47,6 @@ summon_undead() {
     mkdir -v ${XPATH}/config
     mkdir -v ${XPATH}/chain
     mkdir -v ${XPATH}/chain/keys
-    mkdir -v ${XPATH}/chain/keys/ethereum
     cp -v ./config/* ${XPATH}/config/
     # Authority docker compose
     cp -v ./skel/authority.yml ${XPATH}/docker-compose.yml
@@ -70,7 +69,7 @@ create_pwd_file() {
 
 add_miner() {
     # Get signer key
-    PK_SIG=$(docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ parity/parity:${PARITY_RELEASE} account list)
+    PK_SIG=$(docker run -ti -v ${XPATH}/chain/:/root/.local/share/io.parity.ethereum/ -v ${XPATH}/config:/parity/config:ro parity/parity:${PARITY_RELEASE} --chain /parity/config/chain.json account list)
     # Add it to parity configuration
     echo "engine_signer = \"${PK_SIG::42}\"" >> ${XPATH}/config/authority.toml
 }
