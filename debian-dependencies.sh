@@ -46,7 +46,8 @@ sudo apt-get -y install software-properties-common
 OS_NAME=$(. /etc/os-release; echo "$ID")
 RELEASE=$(lsb_release -cs)
 
-if "${OS_NAME}"="raspbian"; then
+if ["${OS_NAME}"=="raspbian"]
+then
 
     echo "${GREEN}[.] ${RED}RASPBIAN${RESET} detected.${RESET}"
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
