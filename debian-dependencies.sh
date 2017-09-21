@@ -21,7 +21,7 @@ echo "${RED}
 }
 
 print_banner
-echo "${GREEN}[.] This script is written for ${RED}DEBIAN${RESET} and ${RED}UBUNTU${RESET} systems to install docker-ce and docker-compose and it's dependencies.${RESET}"
+echo "${GREEN}[.] This script is written for ${RED}DEBIAN, RASPBIAN${RESET} and ${RED}UBUNTU${RESET} systems to install docker-ce and docker-compose and it's dependencies.${RESET}"
 
 sudo apt-get -y remove docker docker-engine docker.io
 
@@ -46,7 +46,9 @@ sudo apt-get -y install software-properties-common
 OS_NAME=$(. /etc/os-release; echo "$ID")
 RELEASE=$(lsb_release -cs)
 
-if [OS_NAME= "raspbian"]; then
+if "${OS_NAME}"="raspbian"; then
+
+    echo "${GREEN}[.] ${RED}RASPBIAN${RESET} detected.${RESET}"
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 
     echo "deb [arch=armhf] https://download.docker.com/linux/${OS_NAME} \
