@@ -46,13 +46,20 @@ sudo apt-get -y install software-properties-common
 OS_NAME=$(. /etc/os-release; echo "$ID")
 RELEASE=$(lsb_release -cs)
 
-curl -fsSL https://download.docker.com/linux/${OS_NAME}/gpg | sudo apt-key add -
+if [OS_NAME= "raspbian"]; then
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 
-sudo add-apt-repository \
-"deb [arch=amd64] https://download.docker.com/linux/${OS_NAME} \
-${RELEASE} \
-stable"
+    echo "deb [arch=armhf] https://download.docker.com/linux/${OS_NAME} \
+    ${RELEASE} stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list
+else
+    curl -fsSL https://download.docker.com/linux/${OS_NAME}/gpg | sudo apt-key add -
 
+    sudo add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/${OS_NAME} \
+    ${RELEASE} \
+    stable"
+fi
 sudo apt-get update
 
 sudo apt-get -y install docker-ce docker-compose
