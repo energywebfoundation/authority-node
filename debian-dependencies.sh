@@ -52,8 +52,7 @@ then
     echo "${GREEN}[.] ${RED}RASPBIAN${RESET} detected.${RESET}"
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 
-    echo "deb [arch=armhf] https://download.docker.com/linux/${OS_NAME} \
-    ${RELEASE} stable" | \
+    echo "deb [arch=armhf] https://download.docker.com/linux/debian ${RELEASE} stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list
 else
     curl -fsSL https://download.docker.com/linux/${OS_NAME}/gpg | sudo apt-key add -
