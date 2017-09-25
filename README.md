@@ -16,8 +16,8 @@
 5. [*Register*](#5-register)
 6. [*Troubleshooting*](#6-troubleshooting)
 
-[*APPENDIX 1. Create Ubuntu 16 instance in AWS EC2*](#appendix-1-create-ubuntu-16-instance-in-aws-ec2)
-[*APPENDIX 2. Additional Security*](#appendix-2-additional-security)
+- [*APPENDIX 1. Create Ubuntu 16 instance in AWS EC2*](#appendix-1-create-ubuntu-16-instance-in-aws-ec2)
+- [*APPENDIX 2. Additional Security*](#appendix-2-additional-security)
 
 ## 1. Introduction
 This tutorial will guide you through the setup process to install a Tobalaba client and become a member in the EWF blockchain. 
@@ -269,8 +269,12 @@ Peer to peer networks rely on providing services that other peers in the network
 
 As with all computers directly exposed to the internet, these services suffer from a myriad of automated and specifically engineered attacks with goals that vary from the denial of service, to fully fledged takeovers of whole infrastructures.
 
-Recent threats like the ‘[Heartbleed](http://heartbleed.com/)’ bug exposed several services and protocols that were previously thought of trusted and secure, but were in fact secretly being exploited.
+Recent threats like the [*heartbleed bug*](http://heartbleed.com/) exposed several services and protocols that were previously thought of trusted and secure, but were in fact secretly being exploited.
 
-Mitigating the impacts of a possibly compromised computer is mandatory in this scenario. Regular security audits with hardening and penetration tests are highly advised.
+Mitigating the impacts of a possibly compromised computer is mandatory in this scenario. Regular security audits with hardening and penetration tests is highly advised.
 
-To create a safe environment we suggest an isolating network topology to access the authority node, in a way that if the authority node is taken the attacker can't easily gain access to it neither to other computers that may have access the node.
+To create a safe environment we suggest an isolating network topology with one-way-only path to access the authority node, in a way that if the authority node is taken the attacker can't easily gain access to other computers in the company infrastructure.
+
+![Network topology diagram](https://github.com/slockit/ewf-tobalaba/blob/raspbian+docs/media/vpn-sec.png)
+
+Above is a diagram of the topology tested in AWS to provide access to the authority node server via a VPN and a pre defined sequence of ssh tunnels.
