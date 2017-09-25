@@ -15,33 +15,31 @@
 	- d. [*Health Check*](#4d-health-check)
 5. [*Register*](#5-register)
 6. [*Troubleshooting*](#6-troubleshooting)
+7. [*Security*](#7-security)
 
-- [*APPENDIX 1. Create Ubuntu 16 instance in AWS EC2*](#appendix-1-create-ubuntu-16-instance-in-aws-ec2)
-- [*APPENDIX 2. Additional Security*](#appendix-2-additional-security)
+[*APPENDIX - Create Ubuntu 16 instance in AWS EC2*](#appendix-1-create-ubuntu-16-instance-in-aws-ec2)
 
 ## 1. Introduction
 This tutorial will guide you through the setup process to install a Tobalaba client and become a member in the EWF blockchain. 
 
-A blockchain is a byzantine fault tolerant distributed data structure in a [*peer-to-peer network*](https://en.wikipedia.org/wiki/Peer-to-peer) of computers interconnected.
+A blockchain is a data structure in a [*peer-to-peer network*](https://en.wikipedia.org/wiki/Peer-to-peer) of computers interconnected. The two most important features of this data storage system are that it is byzantine fault tolerant and distributed.
 
 Any other computer with access to this blockchain network can become a member and send transactions that are then stored into *blocks* by specific computers.
 
-In [*proof-of-authority*](http://nakamotoinstitute.org/bitcoin/) based blockchain networks a computer with the ability to store a block of transactions is named *miner*.
+In [*proof-of-work*](http://nakamotoinstitute.org/bitcoin/) based blockchain networks a computer with the ability to store a block of transactions is named *miner*. Miners compete between then using computational power to be the first to store the next block in the chain.
 
-The Tobalaba network is based in [Ethereum](https://github.com/ethereum/wiki/wiki/White-Paper), a special type of blockchain that allow the creation of *smart contracts*.
+Since competition between nodes is not desired in Tobalaba,  the network reaches consensus via a *proof-of-authority algorithm* named [Aura](https://github.com/paritytech/parity/wiki/Aura). 
 
-Since competition between nodes is not desired Tobalaba is governed by a *proof-of-authority consensus algorithm* named [Aura](https://github.com/paritytech/parity/wiki/Aura). 
+Aura assigning *authorities* that have the right to create new blocks. Authorities still have to reach a consensus on the state of the virtual machine.
 
-Aura reaches consensus on the state of the virtual machine by assigning authorities that have the right to create new blocks. 
-
-The authorities take turns signing the chain of blocks plus the one just created. These blocks are stored after more then 50% of the authorities signed them twice.
+The authorities take turns signing the chain of blocks plus the one just created by them. These blocks are stored after more then 50% of the authorities signed them twice.
 
 ## 2. Requirements
 - **Internet access.**
 - **Previous use of command line interface and unix commands.**
 - **The software is based on Docker and could virtually run in any of the [supported operational systems](https://docs.docker.com/engine/installation/#server)**
 
-To proceed the reader must be logged into a server using an user account with elevated privileges. For instructions on how to setup a compatible [Ubuntu Server on AWS EC2](#appendix-1-create-ubuntu-16-instance-in-aws-ec2) just follow the link.
+To proceed the reader must be logged into a server using an user account with elevated privileges. For instructions on how to setup a compatible [Ubuntu Server on AWS EC2](#appendix-create-ubuntu-16-instance-in-aws-ec2) just follow the link.
 > The following instructions and scripts were designed for and tested on:
 >
 >- [Ubuntu Server 16.04 LTS](#3-ubuntu-instructions)
@@ -226,7 +224,33 @@ This can occur due to a failure in the updating system. Contact EFW technical te
 Check that your firewall rules are allowing TCP  and UDP inbound and outbound on 30303.
 Check that no chain fork has happened by asking EFW technical team.
 
-## APPENDIX 1. Create Ubuntu 16 instance in AWS EC2
+## 7. Security
+
+Peer to peer networks rely on providing services that other peers in the network can discover, by probing and automatically connecting to them.
+
+As with all computers directly exposed to the internet, these services suffer from a myriad of automated and specifically engineered attacks with goals that vary from the denial of service, to fully fledged takeovers of whole infrastructures.
+
+Recent threats like the [*heartbleed bug*](http://heartbleed.com/) exposed several services and protocols that were previously thought of trusted and secure, but were in fact secretly being exploited.
+
+Mitigating the impacts of a possibly compromised computer is mandatory in this scenario. Regular security audits with hardening and penetration tests is highly advised.
+
+To create an isolated environment we suggest a network topology with one-way-only path to access the authority node, in a way that if the authority node is taken the attacker can't easily gain access to other computers in the company infrastructure.
+
+![Network topology diagram](https://github.com/slockit/ewf-tobalaba/blob/raspbian+docs/media/vpn-sec.png)
+
+Above is a diagram of the topology tested in AWS to provide access to the authority node server via a VPN and a pre defined sequence of ssh tunnels.
+
+The **Choke Point** guarantees that all traffic to the **Authority Node** passes through it like a security checkpoint. It has two network connections **VPC1** and **VPC2**. VPC1 has only it and the Authority Node connected. VPC2 is connected to company's VPN.
+
+The firewall in the Authority Node only allows it to receive `ssh` connections from the Choke Point. The one in the Choke Point only receives `ssh` connections from computers inside the VPN.
+
+This diagram and solution is just an example and additional security must apply. 
+
+It is a common culture in companies that adopt proprietary and closed protocols to believe they are more secure than open source solutions. The National Institute of Standards and Technology (NIST) in the United States [specifically recommends](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-123.pdf) against this practice: "System security should not depend on the secrecy of the implementation or its components". 
+
+Any [security by obscurity](https://en.wikipedia.org/wiki/Security_through_obscurity) method should be avoided.
+
+## APPENDIX - Create Ubuntu 16 instance in AWS EC2
 
 This appendix will help the reader to successfully create a virtual server in [Amazon Web Services Elastic Compute Cloud](https://aws.amazon.com/ec2) service.
 
@@ -259,22 +283,7 @@ Are you sure you want to continue connecting (yes/no)?
 13.  The user is then dropped to the shell.
 `ubuntu@INSTANCE_IP $ _`
 
-Congratulations you successfully created an AWS EC2 Ubuntu instance ready for running EWF Authority Node. Please read APPENDIX 2 for basic security measures.
+Congratulations you successfully created an AWS EC2 Ubuntu instance ready for running EWF Authority Node. Please read the [security chapter](#7-security) for basic security measures.
 
 To start installing Tobalaba client please follow the steps in [chapter 2](#2-requirements).
 
-## APPENDIX 2. Additional Security
-
-Peer to peer networks rely on providing services that other peers in the network can discover, by probing and automatically connecting to them.
-
-As with all computers directly exposed to the internet, these services suffer from a myriad of automated and specifically engineered attacks with goals that vary from the denial of service, to fully fledged takeovers of whole infrastructures.
-
-Recent threats like the [*heartbleed bug*](http://heartbleed.com/) exposed several services and protocols that were previously thought of trusted and secure, but were in fact secretly being exploited.
-
-Mitigating the impacts of a possibly compromised computer is mandatory in this scenario. Regular security audits with hardening and penetration tests is highly advised.
-
-To create a safe environment we suggest an isolating network topology with one-way-only path to access the authority node, in a way that if the authority node is taken the attacker can't easily gain access to other computers in the company infrastructure.
-
-![Network topology diagram](https://github.com/slockit/ewf-tobalaba/blob/raspbian+docs/media/vpn-sec.png)
-
-Above is a diagram of the topology tested in AWS to provide access to the authority node server via a VPN and a pre defined sequence of ssh tunnels.
