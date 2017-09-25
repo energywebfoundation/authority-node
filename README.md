@@ -22,17 +22,17 @@
 ## 1. Introduction
 This tutorial will guide you through the setup process to install a Tobalaba client and become a member in the EWF blockchain. 
 
-A blockchain is a data structure in a [*peer-to-peer network*](https://en.wikipedia.org/wiki/Peer-to-peer) of computers interconnected. The two most important features of this data storage system are that it is byzantine fault tolerant and distributed.
+A blockchain is a data structure in a [*peer-to-peer network*](https://en.wikipedia.org/wiki/Peer-to-peer) of interconnected computers. The two most important features of this data storage system are that it is byzantine fault tolerant and distributed.
 
-Any other computer with access to this blockchain network can become a member and send transactions that are then stored into *blocks* by specific computers.
+Any computer with access to this network can send transactions that are then stored into *blocks* by specific computers, known as authority nodes.
 
-In [*proof-of-work*](http://nakamotoinstitute.org/bitcoin/) based blockchain networks a computer with the ability to store a block of transactions is named *miner*. Miners compete between then using computational power to be the first to store the next block in the chain.
+In [*proof-of-work*](http://nakamotoinstitute.org/bitcoin/) based blockchain networks a computer with the ability to create a block of transactions is called *miner*. Miners compete between each other by using computational power to be the first to find the next valid block for the blockchain.
 
 Since competition between nodes is not desired in Tobalaba,  the network reaches consensus via a *proof-of-authority algorithm* named [Aura](https://github.com/paritytech/parity/wiki/Aura). 
 
 Aura assigning *authorities* that have the right to create new blocks. Authorities still have to reach a consensus on the state of the virtual machine.
 
-The authorities take turns signing the chain of blocks plus the one just created by them. These blocks are stored after more then 50% of the authorities signed them twice.
+The authorities take turns signing a new block. These blocks are inmutable after more then 50% of the authorities signed them twice.
 
 ## 2. Requirements
 - **Internet access.**
@@ -45,7 +45,7 @@ To proceed the reader must be logged into a server using an user account with el
 >- [Ubuntu Server 16.04 LTS](#3-ubuntu-instructions)
 >- [Debian 9.1.0](#4-debian-instructions)
 >
->Please contact [EWF team](http://energyweb.org/contact-us/) for support on installing in other supported OS.
+>Please contact [EWF ramp-up-team](http://energyweb.org/contact-us/) for support on installing in other supported OS.
 
 ## 3. Ubuntu Instructions
 
@@ -188,7 +188,7 @@ All done! Please proceed to the register authority node section.
 
 ## 5. Register
 
-After the installation please send the public key address of the installed wallet and enode address to EWF members to register the node as an authority in the network.
+After the installation please send the public key address of the installed wallet and enode address to members of the EWF ramp-up-team to register the node as an authority in the network.
 
 The `enode` address is printed by parity in the logs on the first time it starts. To access it run `docker ps`, note down the `CONTAINER ID` of the parity process and then grep the address. Bellow is an example of the outputs.
 ```
@@ -218,11 +218,11 @@ Log in again with the `ewf` user and in the `/home/ewf/tobalaba/ewf-tobalaba` fo
 > Backup the former wallet by making a safety copy of the keys folder located at `/home/ewf/tobalaba/authority_node/chain/keys`.
 
 - Parity was running but stopped.
-This can occur due to a failure in the updating system. Contact EFW technical team.
+This can occur due to a failure in the updating system. Contact EFW ramp-up-team.
 
-- Parity is running but has less than 2 peers.
+- Parity is running but has only 1 or 0 peers.
 Check that your firewall rules are allowing TCP  and UDP inbound and outbound on 30303.
-Check that no chain fork has happened by asking EFW technical team.
+Check that no chain fork has happened by asking EFW ramp-up-team.
 
 ## 7. Security
 
