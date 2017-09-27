@@ -240,7 +240,7 @@ To create an isolated environment we suggest a network topology with one-way-onl
 
 Above is a diagram of the topology tested in AWS to provide access to the authority node server via a VPN and a pre defined sequence of ssh tunnels.
 
-The **Choke Point** guarantees that all traffic to the **Authority Node** passes through it like a security checkpoint. It has two network connections **VPC1** and **VPC2**. VPC1 has only it and the Authority Node connected. VPC2 is connected to company's VPN.
+The **Choke Point** guarantees that all traffic to the **Authority Node** passes through it like a security checkpoint. It has two network connections **VPC1** and **VPC2**. VPC1 has only it and the Authority Node connected. VPC2 is connected to company's **VPN**.
 
 The firewall in the Authority Node only allows it to receive `ssh` connections from the Choke Point. The one in the Choke Point only receives `ssh` connections from computers inside the VPN.
 

@@ -9,7 +9,7 @@ RESET=`tput sgr0`
 print_banner() {
     echo "${RED}
     *****************************************************************
-    *   Energy Web Foundation Validator Node Deployer v.${VERSION}        *
+    *   Energy Web Foundation Authority Node Deployer v.0.1         *
     *               http://energyweb.org/                           *
     *                                                               *
     *            Copyright © 2017 All rights reserved.              *

@@ -44,12 +44,17 @@ bane() {
 summon_undead() {
     echo "${GREEN}[.] Raising skeleton${RESET}"
     mkdir -v ${XPATH}
+    # Config files
     mkdir -v ${XPATH}/config
+    cp -v ./config/* ${XPATH}/config/
+    # Chain credential files
     mkdir -v ${XPATH}/chain
     mkdir -v ${XPATH}/chain/keys
-    cp -v ./config/* ${XPATH}/config/
     # Authority docker compose
     cp -v ./skel/authority.yml ${XPATH}/docker-compose.yml
+    # Ewf-NetStats config
+    mkdir -v ${XPATH}/monitor
+    cp -v ./skel/eth-netstats.json ${XPATH}/monitor/app.json
 }
 
 create_acc() {
