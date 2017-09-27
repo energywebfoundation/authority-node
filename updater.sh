@@ -25,4 +25,10 @@ done
 # cp ./config/authority.toml ../authority_node/config/authority.toml
 # echo "${MINER}" >> ../authority_node/config/authority.toml
 # sudo systemctl restart ewf-tobalaba-authority@ewf.service
+
+mkdir -v ${CHAIN_PATH}/monitor
+cp -v ./skel/eth-netstats.json ${CHAIN_PATH}/monitor/app.json
+cp -v ./skel/authority.yml ${CHAIN_PATH}/docker-compose.yml
+sudo systemctl restart ewf-tobalaba-authority@ewf.service
+
 echo "$(date)" > ${CHAIN_PATH}/latest_update

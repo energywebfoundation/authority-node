@@ -200,9 +200,9 @@ $ docker logs 8a82f6d1b3c0 2>&1 | grep enode
 enode://80bdd812ff39cd4946ba84eabfced743a0e0888cdab7fab2344b57a630915fb3e50e258fbfa2c66d5a390c4ce2dde144403e814469792e0be137e79b7d95e9ef@54.166.247.12:30303
 ```
 
-The key file contains the public address, to print it please copy the command below and with the cursor after `UTC-` press `tab` on the keyboard to autocomplete the generated key file name. What follows is an example of the output.
+The key file contains the public address, just copy and execute the command bellow. What follows is an example of the output.
 ```
-$ sudo cat ~/tobalaba/authority_node/chain/keys/Tobalaba/UTC- | python -m json.tool | grep address`
+$ sudo cat ~/tobalaba/authority_node/chain/keys/Tobalaba/UTC-* | python -m json.tool | grep address`
 "address": "58e3ed96f074106c41275463883f5f0718b37f2c",
 ```
 
