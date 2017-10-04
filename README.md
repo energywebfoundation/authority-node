@@ -236,7 +236,7 @@ Mitigating the impacts of a possibly compromised computer is mandatory in this s
 
 To create an isolated environment we suggest a network topology with one-way-only path to access the authority node, in a way that if the authority node is taken the attacker can't easily gain access to other computers in the company infrastructure.
 
-![Network topology diagram](https://github.com/slockit/ewf-tobalaba/blob/raspbian+docs/media/vpn-sec.png)
+![Network topology diagram](https://github.com/slockit/ewf-tobalaba/blob/master/media/vpn-sec.png)
 
 Above is a diagram of the topology tested in AWS to provide access to the authority node server via a VPN and a pre defined sequence of ssh tunnels.
 
