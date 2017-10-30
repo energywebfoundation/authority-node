@@ -31,4 +31,5 @@ done
 # cp -v ./skel/authority.yml ../authority_node/docker-compose.yml
 sudo systemctl restart ewf-tobalaba-authority@ewf.service
 
+
 echo "$(date)" > ../authority_node/latest_update
