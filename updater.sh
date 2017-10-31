@@ -31,6 +31,7 @@ done
 # cp -v ./skel/authority.yml ../authority_node/docker-compose.yml
 
 cp ./config/authority.toml ../authority_node/config/authority.toml
+cp ./config/chain.json ../authority_node/config/chain.json
 sudo systemctl restart ewf-tobalaba-authority@ewf.service
 
 
