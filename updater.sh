@@ -29,6 +29,8 @@ done
 # mkdir -v ../authority_node/monitor
 # cp -v ./skel/eth-netstats.json ../authority_node/monitor/app.json
 # cp -v ./skel/authority.yml ../authority_node/docker-compose.yml
+
+cp ./config/authority.toml ../authority_node/config/authority.toml
 sudo systemctl restart ewf-tobalaba-authority@ewf.service
 
 
