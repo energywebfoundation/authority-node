@@ -68,7 +68,6 @@ port = 30303
 min_peers = 25
 max_peers = 50
 nat = "any"
-id = 1
 discovery = true
 warp = true
 allow_ips = "all"
