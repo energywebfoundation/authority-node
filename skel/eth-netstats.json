@@ -1,0 +1,24 @@
+[
+  {
+    "name"              : "node",
+    "script"            : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "merge_logs"        : false,
+    "watch"             : true,
+    "max_restarts"      : 10,
+    "exec_interpreter"  : "node",
+    "exec_mode"         : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"        : "production",
+      "RPC_HOST"        : "node",
+      "RPC_PORT"        : "8545",
+      "LISTENING_PORT"  : "30303",
+      "INSTANCE_NAME"   : "Test - Please change",
+      "CONTACT_DETAILS" : "test@ewf.org - Please change",
+      "WS_SERVER"       : "34.227.66.228:80",
+      "WS_SECRET"       : "0k8H6F4s",
+      "VERBOSITY"       : 3
+    }
+  }
+]

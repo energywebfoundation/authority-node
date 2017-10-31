@@ -24,6 +24,12 @@ done
 # MINER=$(tail -n 1 ../authority_node/config/authority.toml)
 # cp ./config/authority.toml ../authority_node/config/authority.toml
 # echo "${MINER}" >> ../authority_node/config/authority.toml
-# sudo chown ewf:ewf ${CHAIN_PATH}/*
 # sudo systemctl restart ewf-tobalaba-authority@ewf.service
-echo "$(date)" > ${CHAIN_PATH}/latest_update
+
+# mkdir -v ../authority_node/monitor
+# cp -v ./skel/eth-netstats.json ../authority_node/monitor/app.json
+# cp -v ./skel/authority.yml ../authority_node/docker-compose.yml
+sudo systemctl restart ewf-tobalaba-authority@ewf.service
+
+
+echo "$(date)" > ../authority_node/latest_update
