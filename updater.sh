@@ -26,14 +26,19 @@ done
 # echo "${MINER}" >> ../authority_node/config/authority.toml
 # sudo systemctl restart ewf-tobalaba-authority@ewf.service
 
+# --- ADDED NETSTATS
+
 # mkdir -v ../authority_node/monitor
 # cp -v ./skel/eth-netstats.json ../authority_node/monitor/app.json
 # cp -v ./skel/authority.yml ../authority_node/docker-compose.yml
+
+# --- FORK 1
 
 # MINER=$(tail -n 1 ../authority_node/config/authority.toml)
 # cp ./config/authority.toml ../authority_node/config/authority.toml
 # echo "${MINER}" >> ../authority_node/config/authority.toml
 # cp ./config/chain.json ../authority_node/config/chain.json
+rm -rf ../authority_node/chain/chains/Tobalaba
 sudo systemctl stop ewf-tobalaba-authority@ewf.service
 docker pull parity/parity:nightly
 sudo systemctl start ewf-tobalaba-authority@ewf.service
