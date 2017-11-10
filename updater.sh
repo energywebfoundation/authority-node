@@ -47,6 +47,7 @@ done
 MINER=$(tail -n 1 ../authority_node/config/authority.toml)
 cp ./config/authority.toml ../authority_node/config/authority.toml
 echo "${MINER}" >> ../authority_node/config/authority.toml
+sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- Migration to energyweb repository
 
