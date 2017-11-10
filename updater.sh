@@ -43,5 +43,14 @@ done
 # docker pull parity/parity:nightly
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
+# --- Change gas price
+MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+cp ./config/authority.toml ../authority_node/config/authority.toml
+echo "${MINER}" >> ../authority_node/config/authority.toml
+
+# --- Migration to energyweb repository
+
+# git remote rm origin
+# git remote add origin git@github.com:energywebfoundation/authority-node.git
 
 echo "$(date)" > ../authority_node/latest_update
