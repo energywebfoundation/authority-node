@@ -111,23 +111,9 @@ color = true
 
 [mining]
 force_sealing = true
-reseal_on_txs = "all"
-reseal_min_period = 4000
-reseal_max_period = 60000
-work_queue_size = 20
-relay_set = "cheap"
 usd_per_tx = "0.000025"
 usd_per_eth = "auto"
 price_update_period = "hourly"
-gas_cap = "8000000"
-tx_queue_size = 8192
-tx_queue_gas = "off"
-tx_queue_strategy = "gas_factor"
-tx_queue_ban_count = 1
-tx_queue_ban_time = 180 #s
+gas_cap = "800000000"
 tx_gas_limit = "8000000"
-tx_time_limit = 100 #ms
 extra_data = "Parity"
-remove_solved = false
-notify_work = ["http://localhost:3001"]
-refuse_service_transactions = false
