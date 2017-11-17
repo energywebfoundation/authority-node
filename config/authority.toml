@@ -119,7 +119,6 @@ relay_set = "cheap"
 usd_per_tx = "0.000025"
 usd_per_eth = "auto"
 price_update_period = "hourly"
-gas_floor_target = "0x80000000"
 gas_cap = "8000000"
 tx_queue_size = 8192
 tx_queue_gas = "off"
