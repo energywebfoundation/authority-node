@@ -56,11 +56,11 @@ done
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- Change gas back to 8 mill
-MINER=$(tail -c 61 ../authority_node/config/authority.toml)
-cp ./config/authority.toml ../authority_node/config/authority.toml
-echo "${MINER}" >> ../authority_node/config/authority.toml
-sudo systemctl stop ewf-tobalaba-authority@ewf.service
-sudo systemctl start ewf-tobalaba-authority@ewf.service
+# MINER=$(tail -c 61 ../authority_node/config/authority.toml)
+# cp ./config/authority.toml ../authority_node/config/authority.toml
+# echo "${MINER}" >> ../authority_node/config/authority.toml
+# sudo systemctl stop ewf-tobalaba-authority@ewf.service
+# sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- Migration to energyweb repository
 
