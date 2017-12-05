@@ -70,7 +70,7 @@ $ mkdir tobalaba
 
 $ cd tobalaba
 
-$ git clone https://github.com/slockit/ewf-tobalaba.git
+$ git clone https://github.com/energywebfoundation/authority-node.git
 
 $ cd ewf-tobalaba
 ```
@@ -143,7 +143,7 @@ $ mkdir tobalaba
 
 $ cd tobalaba
 
-$ git clone https://github.com/slockit/ewf-tobalaba.git
+$ git clone https://github.com/energywebfoundation/authority-node.git
 
 $ cd ewf-tobalaba
 ```
