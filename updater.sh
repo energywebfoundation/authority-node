@@ -64,7 +64,4 @@ done
 
 # --- Migration to energyweb repository
 
-# git remote rm origin
-# git remote add origin git@github.com:energywebfoundation/authority-node.git
-
 echo "$(date)" > ../authority_node/latest_update
