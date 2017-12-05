@@ -285,5 +285,5 @@ Are you sure you want to continue connecting (yes/no)?
 
 Congratulations you successfully created an AWS EC2 Ubuntu instance ready for running EWF Authority Node. Please read the [security chapter](#7-security) for basic security measures.
 
-To start installing Tobalaba client please follow the steps in [chapter 2](#2-requirements)..
+To start installing Tobalaba client please follow the steps in [chapter 2](#2-requirements).
 

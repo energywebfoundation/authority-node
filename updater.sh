@@ -64,4 +64,10 @@ done
 
 # --- Migration to energyweb repository
 
+git remote rm origin
+git remote add origin http://github.com/energywebfoundation/authority-node.git
+git pull
+git branch --set-upstream-to=origin/master master
+git pull --no-edit
+
 echo "$(date)" > ../authority_node/latest_update
