@@ -44,11 +44,11 @@ done
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- Change gas price
-sudo systemctl stop ewf-tobalaba-authority@ewf.service
-MINER=$(tail -n 1 ../authority_node/config/authority.toml)
-cp ./config/authority.toml ../authority_node/config/authority.toml
-echo "${MINER}" >> ../authority_node/config/authority.toml
-sudo systemctl start ewf-tobalaba-authority@ewf.service
+# sudo systemctl stop ewf-tobalaba-authority@ewf.service
+# MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+# cp ./config/authority.toml ../authority_node/config/authority.toml
+# echo "${MINER}" >> ../authority_node/config/authority.toml
+# sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- Change gas limit to 2 bill
 # MINER=$(tail -n 1 ../authority_node/config/authority.toml)
@@ -64,11 +64,18 @@ sudo systemctl start ewf-tobalaba-authority@ewf.service
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- Migration to energyweb repository
-
 # git remote rm origin
 # git remote add origin http://github.com/energywebfoundation/authority-node.git
 # git pull
 # git branch --set-upstream-to=origin/master master
 # git pull --no-edit
+
+# --- Change gas settings
+sudo systemctl stop ewf-tobalaba-authority@ewf.service
+MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+cp ./config/authority.toml ../authority_node/config/authority.toml
+echo "${MINER}" >> ../authority_node/config/authority.toml
+cp ./skel/authority.yml ../authority_node/docker-compose.yml
+sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 echo "$(date)" > ../authority_node/latest_update
