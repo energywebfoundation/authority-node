@@ -71,11 +71,16 @@ done
 # git pull --no-edit
 
 # --- Change gas settings
+# sudo systemctl stop ewf-tobalaba-authority@ewf.service
+# MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+# cp ./config/authority.toml ../authority_node/config/authority.toml
+# echo "${MINER}" >> ../authority_node/config/authority.toml
+# cp ./skel/authority.yml ../authority_node/docker-compose.yml
+# sudo systemctl start ewf-tobalaba-authority@ewf.service
+
+# --- Extend enode list
 sudo systemctl stop ewf-tobalaba-authority@ewf.service
-MINER=$(tail -n 1 ../authority_node/config/authority.toml)
-cp ./config/authority.toml ../authority_node/config/authority.toml
-echo "${MINER}" >> ../authority_node/config/authority.toml
-cp ./skel/authority.yml ../authority_node/docker-compose.yml
+cp ./config/enodeList.list ../authority_node/config/enodeList.list
 sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 echo "$(date)" > ../authority_node/latest_update
