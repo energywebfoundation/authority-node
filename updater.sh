@@ -79,8 +79,15 @@ done
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- Extend enode list
+# sudo systemctl stop ewf-tobalaba-authority@ewf.service
+# cp ./config/enodeList.list ../authority_node/config/enodeList.list
+# sudo systemctl start ewf-tobalaba-authority@ewf.service
+
+# --- Change gas settings
 sudo systemctl stop ewf-tobalaba-authority@ewf.service
-cp ./config/enodeList.list ../authority_node/config/enodeList.list
+MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+cp ./config/authority.toml ../authority_node/config/authority.toml
+echo "${MINER}" >> ../authority_node/config/authority.toml
 sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 echo "$(date)" > ../authority_node/latest_update
