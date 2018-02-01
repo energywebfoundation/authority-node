@@ -84,10 +84,13 @@ done
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- Change gas settings
-sudo systemctl stop ewf-tobalaba-authority@ewf.service
-MINER=$(tail -n 1 ../authority_node/config/authority.toml)
-cp ./config/authority.toml ../authority_node/config/authority.toml
-echo "${MINER}" >> ../authority_node/config/authority.toml
+# sudo systemctl stop ewf-tobalaba-authority@ewf.service
+# MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+# cp ./config/authority.toml ../authority_node/config/authority.toml
+# echo "${MINER}" >> ../authority_node/config/authority.toml
+# sudo systemctl start ewf-tobalaba-authority@ewf.service
+
+# --- Netstats restart
 sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 echo "$(date)" > ../authority_node/latest_update
