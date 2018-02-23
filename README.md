@@ -287,3 +287,6 @@ Congratulations you successfully created an AWS EC2 Ubuntu instance ready for ru
 
 To start installing Tobalaba client please follow the steps in [chapter 2](#2-requirements).
 
+## APPENDIX - Wallet Remote Access
+
+In some cases like automated routine functions and maintance of the service, remote access to the server's wallet might present necessary. In [this link](https://wiki.parity.io/Wallet-Remote-Access) the parity team describes some decent starting steps to secure this access.
