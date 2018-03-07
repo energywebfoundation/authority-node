@@ -26,7 +26,7 @@ path = "/root/.local/share/io.parity.ethereum/signer"
 disable = false
 port = 8545
 interface = "0.0.0.0"
-cors = "null"
+cors = [ ]
 apis = ["web3", "eth", "net", "parity", "traces", "rpc", "secretstore"]
 hosts = ["none"]
 
@@ -60,7 +60,7 @@ path = "/root/.local/share/io.parity.ethereum/secretstore"
 enable = false
 port = 5001
 interface = "0.0.0.0"
-cors = "null"
+cors = [ ]
 hosts = ["none"]
 
 [network]
