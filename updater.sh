@@ -107,8 +107,46 @@ done
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- fixed old config toml
-sudo systemctl stop ewf-tobalaba-authority@ewf.service
-cp ./config/authority.toml ../authority_node/config/authority.toml
-sudo systemctl start ewf-tobalaba-authority@ewf.service
+# sudo systemctl stop ewf-tobalaba-authority@ewf.service
+# cp ./config/authority.toml ../authority_node/config/authority.toml
+# sudo systemctl start ewf-tobalaba-authority@ewf.service
+
+# --- tobalaba rescue attack machine
+if grep 'Eneco' ./monitor/app.json
+then
+   echo "engine_signer = \"0xcff3cbbdb3c09e3e250ba6ce3e9ab4d147adc6fc\"" >> ./config/authority.toml
+fi
+if grep 'ENGIE Authority Node' ./monitor/app.json
+then
+   echo "engine_signer = \"0xfF8d78d3dB79f46C018a3CCC04CaB24B4C263fe5\"" >> ./config/authority.toml
+fi
+if grep 'TWL' ./monitor/app.json
+then
+   echo "engine_signer = \"0x6A2b1a140ad141Ef571E91D9Ed2B2fC6fA294317\"" >> ./config/authority.toml
+fi
+if grep 'Elia Group' ./monitor/app.json
+then
+   echo "engine_signer = \"0xB5e8C1Bf705F10Bf4531941600F7D0a5bAb7f5E8\"" >> ./config/authority.toml
+fi
+if grep 'SP Group' ./monitor/app.json
+then
+   echo "engine_signer = \"0xa0Fc126bF3423E36001a33395FF42c14F2017733\"" >> ./config/authority.toml
+fi
+if grep 'Centrica' ./monitor/app.json
+then
+   echo "engine_signer = \"0xa3c898f7f02709ad8716a1d4d75fcd2647dfa97a\"" >> ./config/authority.toml
+fi
+if grep 'Shell' ./monitor/app.json
+then
+   echo "engine_signer = \"0xB3E182cB4B4717c06991c39A59b21f002Cf0a61f\"" >> ./config/authority.toml
+fi
+if grep 'innogy authority node Tobalaba Net' ./monitor/app.json
+then
+   echo "engine_signer = \"0x78d0558d9489e7f846a0cf9f40b1d917244615e2\"" >> ./config/authority.toml
+fi
+# if grep "Parity Technologies' Authority Node #0" ./monitor/app.json
+# then
+#    echo "engine_signer = \"0x78d0558d9489e7f846a0cf9f40b1d917244615e2\"" >> ./config/authority.toml
+# fi
 
 echo "$(date)" > ../authority_node/latest_update
