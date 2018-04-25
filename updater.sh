@@ -94,7 +94,16 @@ done
 # sudo systemctl restart ewf-tobalaba-authority@ewf.service
 
 # --- Change uncleBlockCount in chain file
-cp ./config/chain.json ../authority_node/config/chain.json
-sudo systemctl restart ewf-tobalaba-authority@ewf.service
+# cp ./config/chain.json ../authority_node/config/chain.json
+# sudo systemctl restart ewf-tobalaba-authority@ewf.service
+
+# --- Hardfork 2 Wasm
+# cp ./config/chain.json ../authority_node/config/chain.json
+# sudo systemctl restart ewf-tobalaba-authority@ewf.service
+
+# --- wasm docker
+sudo systemctl stop ewf-tobalaba-authority@ewf.service
+docker pull parity/parity:nightly
+sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 echo "$(date)" > ../authority_node/latest_update
