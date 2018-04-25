@@ -60,7 +60,7 @@ path = "/root/.local/share/io.parity.ethereum/secretstore"
 enable = false
 port = 5001
 interface = "0.0.0.0"
-cors = "null"
+cors = []
 hosts = ["none"]
 
 [network]
