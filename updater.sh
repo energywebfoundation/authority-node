@@ -112,38 +112,38 @@ done
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # --- tobalaba rescue attack machine
-if grep 'Eneco' ../authority_node/monitor/app.json
-then
-   echo "engine_signer = \"0xcff3cbbdb3c09e3e250ba6ce3e9ab4d147adc6fc\"" >> ../authority_node/config/authority.toml
-fi
-if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
-then
-   echo "engine_signer = \"0xfF8d78d3dB79f46C018a3CCC04CaB24B4C263fe5\"" >> ../authority_node/config/authority.toml
-fi
-if grep 'TWL' ../authority_node/monitor/app.json
-then
-   echo "engine_signer = \"0x6A2b1a140ad141Ef571E91D9Ed2B2fC6fA294317\"" >> ../authority_node/config/authority.toml
-fi
-if grep 'Elia Group' ../authority_node/monitor/app.json
-then
-   echo "engine_signer = \"0xB5e8C1Bf705F10Bf4531941600F7D0a5bAb7f5E8\"" >> ../authority_node/config/authority.toml
-fi
-if grep 'SP Group' ../authority_node/monitor/app.json
-then
-   echo "engine_signer = \"0xa0Fc126bF3423E36001a33395FF42c14F2017733\"" >> ../authority_node/config/authority.toml
-fi
-if grep 'Centrica' ../authority_node/monitor/app.json
-then
-   echo "engine_signer = \"0xa3c898f7f02709ad8716a1d4d75fcd2647dfa97a\"" >> ../authority_node/config/authority.toml
-fi
-if grep 'Shell' ../authority_node/monitor/app.json
-then
-   echo "engine_signer = \"0xB3E182cB4B4717c06991c39A59b21f002Cf0a61f\"" >> ../authority_node/config/authority.toml
-fi
-if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
-then
-   echo "engine_signer = \"0x78d0558d9489e7f846a0cf9f40b1d917244615e2\"" >> ../authority_node/config/authority.toml
-fi
+# if grep 'Eneco' ../authority_node/monitor/app.json
+# then
+#    echo "engine_signer = \"0xcff3cbbdb3c09e3e250ba6ce3e9ab4d147adc6fc\"" >> ../authority_node/config/authority.toml
+#fi
+#if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
+#then
+#   echo "engine_signer = \"0xfF8d78d3dB79f46C018a3CCC04CaB24B4C263fe5\"" >> ../authority_node/config/authority.toml
+#fi
+#if grep 'TWL' ../authority_node/monitor/app.json
+#then
+#   echo "engine_signer = \"0x6A2b1a140ad141Ef571E91D9Ed2B2fC6fA294317\"" >> ../authority_node/config/authority.toml
+#fi
+#if grep 'Elia Group' ../authority_node/monitor/app.json
+#then
+#   echo "engine_signer = \"0xB5e8C1Bf705F10Bf4531941600F7D0a5bAb7f5E8\"" >> ../authority_node/config/authority.toml
+#fi
+#if grep 'SP Group' ../authority_node/monitor/app.json
+#then
+#   echo "engine_signer = \"0xa0Fc126bF3423E36001a33395FF42c14F2017733\"" >> ../authority_node/config/authority.toml
+#fi
+#if grep 'Centrica' ../authority_node/monitor/app.json
+#then
+#   echo "engine_signer = \"0xa3c898f7f02709ad8716a1d4d75fcd2647dfa97a\"" >> ../authority_node/config/authority.toml
+#fi
+#if grep 'Shell' ../authority_node/monitor/app.json
+#then
+#   echo "engine_signer = \"0xB3E182cB4B4717c06991c39A59b21f002Cf0a61f\"" >> ../authority_node/config/authority.toml
+#fi
+#if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
+#then
+#   echo "engine_signer = \"0x78d0558d9489e7f846a0cf9f40b1d917244615e2\"" >> ../authority_node/config/authority.toml
+#fi
 if grep 'GridSingularity' ../authority_node/monitor/app.json
 then
    echo "engine_signer = \"0x84318cAE5bF44f8EE9093980d77247cD30dEF2E3\"" >> ../authority_node/config/authority.toml
