@@ -144,6 +144,10 @@ if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
 then
    echo "engine_signer = \"0x78d0558d9489e7f846a0cf9f40b1d917244615e2\"" >> ../authority_node/config/authority.toml
 fi
+if grep 'GridSingularity' ../authority_node/monitor/app.json
+then
+   echo "engine_signer = \"0x84318cAE5bF44f8EE9093980d77247cD30dEF2E3\"" >> ../authority_node/config/authority.toml
+fi
 # if grep "Parity Technologies' Authority Node #0" ../authority_node/monitor/app.json
 # then
 #    echo "engine_signer = \"0x78d0558d9489e7f846a0cf9f40b1d917244615e2\"" >> ../authority_node/config/authority.toml
