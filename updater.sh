@@ -153,6 +153,8 @@ done
 #    echo "engine_signer = \"0x78d0558d9489e7f846a0cf9f40b1d917244615e2\"" >> ../authority_node/config/authority.toml
 # fi
 
+# --- wasm fork
+cp ./config/chain.json ../authority_node/config/chain.json
 sudo systemctl restart ewf-tobalaba-authority@ewf.service
 
 echo "$(date)" > ../authority_node/latest_update
