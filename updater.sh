@@ -164,8 +164,10 @@ done
 
 if grep 'OLI' ../authority_node/monitor/app.json
 then
+    sudo systemctl stop ewf-tobalaba-authority@ewf.service
+    docker pull parity/parity:nightly
     rm -rf ../authority_node/chain/chains
-    sudo systemctl restart ewf-tobalaba-authority@ewf.service
+    sudo systemctl start ewf-tobalaba-authority@ewf.service
 fi
 
 echo "$(date)" > ../authority_node/latest_update
