@@ -164,7 +164,7 @@ done
 
 if grep 'OLI' ../authority_node/monitor/app.json
 then
-    rm -rf ../authority_node/chain/chains/Tobalaba
+    rm -rf ../authority_node/chain/chains
     sudo systemctl restart ewf-tobalaba-authority@ewf.service
 fi
 
