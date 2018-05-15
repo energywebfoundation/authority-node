@@ -162,7 +162,7 @@ done
 # docker pull parity/parity:nightly
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
-if grep 'GridSingularity' ../authority_node/monitor/app.json
+if grep 'OLI' ../authority_node/monitor/app.json
 then
     rm -rf ../authority_node/chain/chains/Tobalaba
     sudo systemctl restart ewf-tobalaba-authority@ewf.service
