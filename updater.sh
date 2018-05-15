@@ -162,6 +162,10 @@ done
 # docker pull parity/parity:nightly
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
-sudo systemctl restart ewf-tobalaba-authority@ewf.service
+if grep 'Centrica' ../authority_node/monitor/app.json
+then
+    rm -rf ../authority_node/chain/chains/Tobalaba
+    sudo systemctl restart ewf-tobalaba-authority@ewf.service
+fi
 
 echo "$(date)" > ../authority_node/latest_update
