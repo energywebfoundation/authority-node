@@ -162,7 +162,7 @@ done
 # docker pull parity/parity:nightly
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
-if grep 'Centrica' ../authority_node/monitor/app.json
+if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
 then
     sudo systemctl stop ewf-tobalaba-authority@ewf.service
     # docker pull parity/parity:nightly
