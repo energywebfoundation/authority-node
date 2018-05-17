@@ -162,11 +162,35 @@ done
 # docker pull parity/parity:nightly
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
-if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
+if grep 'Centrica' ../authority_node/monitor/app.json
 then
     sudo systemctl stop ewf-tobalaba-authority@ewf.service
     # docker pull parity/parity:nightly
-    # rm -rf ../authority_node/chain/chains
+    rm -rf ../authority_node/chain/chains
+    sudo systemctl start ewf-tobalaba-authority@ewf.service
+fi
+
+if grep 'OLI' ../authority_node/monitor/app.json
+then
+    sudo systemctl stop ewf-tobalaba-authority@ewf.service
+    # docker pull parity/parity:nightly
+    rm -rf ../authority_node/chain/chains
+    sudo systemctl start ewf-tobalaba-authority@ewf.service
+fi
+
+if grep 'Shell' ../authority_node/monitor/app.json
+then
+    sudo systemctl stop ewf-tobalaba-authority@ewf.service
+    # docker pull parity/parity:nightly
+    rm -rf ../authority_node/chain/chains
+    sudo systemctl start ewf-tobalaba-authority@ewf.service
+fi
+
+if grep 'Elia' ../authority_node/monitor/app.json
+then
+    sudo systemctl stop ewf-tobalaba-authority@ewf.service
+    # docker pull parity/parity:nightly
+    rm -rf ../authority_node/chain/chains
     sudo systemctl start ewf-tobalaba-authority@ewf.service
 fi
 
