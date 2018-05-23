@@ -162,11 +162,12 @@ done
 # docker pull parity/parity:nightly
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
- if grep 'GridSingularity' ../authority_node/monitor/app.json
+ if grep 'Centrica' ../authority_node/monitor/app.json
  then
      sudo systemctl stop ewf-tobalaba-authority@ewf.service
      #docker pull parity/parity:nightly
      rm -rf ../authority_node/chain/chains
+     cp ./skel/authority.yml ../authority_node/docker-compose.yml
      sudo systemctl start ewf-tobalaba-authority@ewf.service
 fi
 
