@@ -166,7 +166,7 @@ done
  then
      sudo systemctl stop ewf-tobalaba-authority@ewf.service
      #docker pull parity/parity:nightly
-     #rm -rf ../authority_node/chain/chains
+     rm -rf ../authority_node/chain/chains
      sudo systemctl start ewf-tobalaba-authority@ewf.service
 fi
 
