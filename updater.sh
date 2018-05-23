@@ -171,6 +171,7 @@ done
 # fi
 
 sudo systemctl stop ewf-tobalaba-authority@ewf.service
+docker pull parity/parity:nightly
 sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 echo "$(date)" > ../authority_node/latest_update
