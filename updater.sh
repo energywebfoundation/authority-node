@@ -162,12 +162,16 @@ done
 # docker pull parity/parity:nightly
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
- if grep 'GridSingularity' ../authority_node/monitor/app.json
+ if grep 'Cenrica' ../authority_node/monitor/app.json
  then
      sudo systemctl stop ewf-tobalaba-authority@ewf.service
      #docker pull parity/parity:nightly
      rm -rf ../authority_node/chain/chains
-     sudo systemctl start ewf-tobalaba-authority@ewf.service
+     #sudo systemctl start ewf-tobalaba-authority@ewf.service
+     MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+    cp ./config/authority.toml ../authority_node/config/authority.toml
+    echo "${MINER}" >> ../authority_node/config/authority.toml
+    sudo systemctl start ewf-tobalaba-authority@ewf.service
 fi
 
 # sudo systemctl stop ewf-tobalaba-authority@ewf.service
