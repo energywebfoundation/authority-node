@@ -169,7 +169,7 @@ done
      sudo systemctl start ewf-tobalaba-authority@ewf.service
 fi
 
- if grep 'SP' ../authority_node/monitor/app.json
+ if grep 'Parity' ../authority_node/monitor/app.json
  then
      sudo systemctl stop ewf-tobalaba-authority@ewf.service
      docker pull parity/parity:stable
