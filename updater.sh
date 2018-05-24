@@ -172,7 +172,7 @@ fi
  if grep 'OLI' ../authority_node/monitor/app.json
  then
      sudo systemctl stop ewf-tobalaba-authority@ewf.service
-     docker pull parity/parity:stable
+     #docker pull parity/parity:stable
      rm -rf ../authority_node/chain/chains
      cp ./skel/authority.yml ../authority_node/docker-compose.yml
      sudo systemctl start ewf-tobalaba-authority@ewf.service
