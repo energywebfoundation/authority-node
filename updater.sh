@@ -162,13 +162,6 @@ done
 # docker pull parity/parity:nightly
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
- if grep '0x6a2b1a140ad141ef571e91d9ed2b2fc6fa294317' ../authority_node/config/authority.toml
- then
-     sudo systemctl stop ewf-tobalaba-authority@ewf.service
-
-     sudo systemctl start ewf-tobalaba-authority@ewf.service
-fi
-
  if grep 'OLI' ../authority_node/monitor/app.json
  then
      sudo systemctl stop ewf-tobalaba-authority@ewf.service
