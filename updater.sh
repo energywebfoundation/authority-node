@@ -162,13 +162,8 @@ done
 # docker pull parity/parity:nightly
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
- if grep 'OLI' ../authority_node/monitor/app.json
- then
-     sudo systemctl stop ewf-tobalaba-authority@ewf.service
-     sudo systemctl start ewf-tobalaba-authority@ewf.service
-fi
 
- if grep 'ENGIE' ../authority_node/monitor/app.json
+ if grep 'Rocky' ../authority_node/monitor/app.json
  then
      sudo systemctl stop ewf-tobalaba-authority@ewf.service
      docker pull parity/parity:v1.9.3
