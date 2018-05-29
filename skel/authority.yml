@@ -2,7 +2,7 @@ version: '2.0'
 services:
 
   node:
-    image: parity/parity:nightly
+    image: parity/parity:v1.9.3
     command:
       --config /parity/config/authority.toml
       --nat extip:${EXTERNAL_IP}
