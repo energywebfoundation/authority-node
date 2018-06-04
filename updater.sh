@@ -166,8 +166,8 @@ done
  if grep 'Stedin' ../authority_node/monitor/app.json
  then
      sudo systemctl stop ewf-tobalaba-authority@ewf.service
-     docker pull parity/parity:v1.9.3
-     cp ./skel/authority.yml ../authority_node/docker-compose.yml
+     #docker pull parity/parity:v1.9.3
+     #cp ./skel/authority.yml ../authority_node/docker-compose.yml
      sudo systemctl start ewf-tobalaba-authority@ewf.service
 fi
 
