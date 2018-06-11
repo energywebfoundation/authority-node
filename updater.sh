@@ -163,7 +163,7 @@ done
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 
- if grep 'OLI' ../authority_node/monitor/app.json
+ if grep 'Stedin' ../authority_node/monitor/app.json
  then
      sudo systemctl stop ewf-tobalaba-authority@ewf.service
      #docker pull parity/parity:v1.9.3
