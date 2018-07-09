@@ -176,3 +176,4 @@ fi
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 echo "$(date)" > ../authority_node/latest_update
+ 
