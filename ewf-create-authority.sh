@@ -6,7 +6,7 @@ CHAIN_NAME="${NAME}_node"
 # parity client conf
 VERSION="0.69"
 CHAIN_NODE="0"
-PARITY_RELEASE="nightly"
+PARITY_RELEASE="v1.9.3"
 
 # environmental-awareness
 WORKING_DIR=$(pwd)
