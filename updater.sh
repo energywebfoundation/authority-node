@@ -111,6 +111,85 @@ done
 # cp ./config/authority.toml ../authority_node/config/authority.toml
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
+#
+# --- 2018 Autumm update
+#
+
+# --- revert to v1.9.x 
+# sudo systemctl stop ewf-tobalaba-authority@ewf.service
+# cp ./config/authority-for-1.9.toml ../authority_node/config/authority.toml
+# docker pull parity/parity:v1.9.7
+# sudo systemctl start ewf-tobalaba-authority@ewf.service
+
+autummupdate () {
+    # pre-pull the image
+    docker pull parity/parity:v1.11.8
+    # Stop parity
+    sudo systemctl stop ewf-tobalaba-authority@ewf.service
+    # Copy new compose file with updated version
+    cp ./skel/authority.yml ../authority_node/docker-compose.yml
+    # Copy new toml with txqueue settings
+    cp ./config/authority.toml ../authority_node/config/authority.toml
+    # Copy new chain definition
+    cp ./config/chain-new.json ../authority_node/config/chain.json
+    # restart the compose file
+    sudo systemctl start ewf-tobalaba-authority@ewf.service
+}
+
+# -- First batch
+
+# if grep 'Eneco' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+# if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+# if grep 'TWL' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+# if grep 'Elia Group' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+# if grep 'SP Group' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+# -- Second batch
+# if grep 'Centrica' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+# if grep 'Shell' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+# if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+# if grep 'GridSingularity' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+# if grep 'Parity Technologies' Authority Node #0' ../authority_node/monitor/app.json
+# then
+#    autummupdate
+# fi
+
+
 # --- tobalaba rescue attack machine
 # if grep 'Eneco' ../authority_node/monitor/app.json
 # then
