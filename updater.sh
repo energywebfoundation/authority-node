@@ -129,7 +129,10 @@ autummupdate () {
     # Copy new compose file with updated version
     cp ./skel/authority.yml ../authority_node/docker-compose.yml
     # Copy new toml with txqueue settings
+    MINER=$(tail -n 1 ../authority_node/config/authority.toml)
     cp ./config/authority.toml ../authority_node/config/authority.toml
+    echo "${MINER}" >> ../authority_node/config/authority.toml
+    
     # Copy new chain definition
     cp ./config/chain-new.json ../authority_node/config/chain.json
     # restart the compose file
