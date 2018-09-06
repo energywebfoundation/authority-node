@@ -115,3 +115,6 @@ gas_cap = "800000000"
 gas_floor_target = "80000000"
 tx_gas_limit = "80000000"
 extra_data = "Parity"
+tx_queue_mem_limit= 0
+tx_queue_size = 20000
+tx_queue_per_sender = 20000
