@@ -141,30 +141,30 @@ autummupdate () {
 
 # -- First batch
 
-# if grep 'Eneco' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep 'Eneco' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
-# if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
-# if grep 'TWL' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep 'TWL' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
-# if grep 'Elia Group' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep 'Elia Group' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
-# if grep 'SP Group' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep 'SP Group' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
 # -- Second batch
 # if grep 'Centrica' ../authority_node/monitor/app.json
