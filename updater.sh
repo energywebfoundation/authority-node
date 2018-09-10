@@ -167,30 +167,30 @@ autummupdate () {
 #fi
 
 # -- Second batch
-# if grep 'Centrica' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep 'Centrica' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
-# if grep 'Shell' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep 'Shell' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
-# if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
-# if grep 'GridSingularity' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep 'GridSingularity' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
-# if grep 'Parity Technologies' Authority Node #0' ../authority_node/monitor/app.json
-# then
-#    autummupdate
-# fi
+if grep "Parity Technologies' Authority Node #0" ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
 
 
 # --- tobalaba rescue attack machine
