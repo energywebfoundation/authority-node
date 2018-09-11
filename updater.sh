@@ -151,11 +151,6 @@ autummupdate () {
 #   autummupdate
 #fi
 
-#if grep 'TWL' ../authority_node/monitor/app.json
-#then
-#   autummupdate
-#fi
-
 #if grep 'Elia Group' ../authority_node/monitor/app.json
 #then
 #   autummupdate
@@ -167,12 +162,17 @@ autummupdate () {
 #fi
 
 # -- Second batch
-if grep 'Centrica' ../authority_node/monitor/app.json
+if grep 'TWL' ../authority_node/monitor/app.json
 then
    autummupdate
 fi
 
-if grep 'Shell' ../authority_node/monitor/app.json
+if grep 'DigitalVirtues - Signal' ../authority_node/monitor/app.json
+then
+   autummupdate
+fi
+
+if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
 then
    autummupdate
 fi
