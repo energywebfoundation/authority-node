@@ -141,56 +141,53 @@ autummupdate () {
 
 # -- First batch
 
-#if grep 'Eneco' ../authority_node/monitor/app.json
-#then
-#   autummupdate
-#fi
+if grep 'Eneco' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
-#if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
-#then
-#   autummupdate
-#fi
+if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
-#if grep 'Elia Group' ../authority_node/monitor/app.json
-#then
-#   autummupdate
-#fi
+if grep 'Elia Group' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
-#if grep 'SP Group' ../authority_node/monitor/app.json
-#then
-#   autummupdate
-#fi
+if grep 'SP Group' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
 # -- Second batch
 if grep 'TWL' ../authority_node/monitor/app.json
 then
-   autummupdate
+   exit 0
 fi
 
 if grep 'DigitalVirtues - Signal' ../authority_node/monitor/app.json
 then
-   autummupdate
+   exit 0
 fi
 
 if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
 then
-   autummupdate
+   exit 0
 fi
 
 if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
 then
-   autummupdate
+   exit 0
 fi
 
 if grep 'GridSingularity' ../authority_node/monitor/app.json
 then
-   autummupdate
+   exit 0
 fi
 
-if grep "Parity Technologies' Authority Node #0" ../authority_node/monitor/app.json
-then
-   autummupdate
-fi
+autummupdate
 
 
 # --- tobalaba rescue attack machine
