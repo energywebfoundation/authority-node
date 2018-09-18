@@ -121,73 +121,73 @@ done
 # docker pull parity/parity:v1.9.7
 # sudo systemctl start ewf-tobalaba-authority@ewf.service
 
-autummupdate () {
+# autummupdate () {
     # pre-pull the image
-    docker pull parity/parity:v1.11.8
+#    docker pull parity/parity:v1.11.8
     # Stop parity
-    sudo systemctl stop ewf-tobalaba-authority@ewf.service
+#    sudo systemctl stop ewf-tobalaba-authority@ewf.service
     # Copy new compose file with updated version
-    cp ./skel/authority.yml ../authority_node/docker-compose.yml
+#    cp ./skel/authority.yml ../authority_node/docker-compose.yml
     # Copy new toml with txqueue settings
-    MINER=$(tail -n 1 ../authority_node/config/authority.toml)
-    cp ./config/authority.toml ../authority_node/config/authority.toml
-    echo "${MINER}" >> ../authority_node/config/authority.toml
+#    MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+#    cp ./config/authority.toml ../authority_node/config/authority.toml
+#    echo "${MINER}" >> ../authority_node/config/authority.toml
     
     # Copy new chain definition
-    cp ./config/chain-new.json ../authority_node/config/chain.json
+#    cp ./config/chain-new.json ../authority_node/config/chain.json
     # restart the compose file
-    sudo systemctl start ewf-tobalaba-authority@ewf.service
-}
+#    sudo systemctl start ewf-tobalaba-authority@ewf.service
+#}
 
 # -- First batch
 
-if grep 'Eneco' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'Eneco' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-if grep 'Elia Group' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'Elia Group' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-if grep 'SP Group' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'SP Group' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
 # -- Second batch
-if grep 'TWL' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'TWL' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-if grep 'DigitalVirtues - Signal' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'DigitalVirtues - Signal' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-if grep 'GridSingularity' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'GridSingularity' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-autummupdate
+#autummupdate
 
 
 # --- tobalaba rescue attack machine
@@ -250,9 +250,9 @@ autummupdate
 #     sudo systemctl start ewf-tobalaba-authority@ewf.service
 #fi
 
-#sudo systemctl stop ewf-tobalaba-authority@ewf.service
+sudo systemctl stop ewf-tobalaba-authority@ewf.service
 # docker pull parity/parity:nightly
-#sudo systemctl start ewf-tobalaba-authority@ewf.service
+sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 echo "$(date)" > ../authority_node/latest_update
  
