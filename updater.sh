@@ -257,7 +257,7 @@ done
 if grep 'TWL' ../authority_node/monitor/app.json
 then
     sudo systemctl stop ewf-tobalaba-authority@ewf.service
-    docker pull parity/parity:v1.11.8
+    cp ./skel/authority.yml ../authority_node/docker-compose.yml
     sudo systemctl start ewf-tobalaba-authority@ewf.service
 fi
 
