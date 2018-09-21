@@ -250,9 +250,16 @@ done
 #     sudo systemctl start ewf-tobalaba-authority@ewf.service
 #fi
 
-sudo systemctl stop ewf-tobalaba-authority@ewf.service
+# sudo systemctl stop ewf-tobalaba-authority@ewf.service
 # docker pull parity/parity:nightly
-sudo systemctl start ewf-tobalaba-authority@ewf.service
+# sudo systemctl start ewf-tobalaba-authority@ewf.service
+
+if grep 'TWL' ../authority_node/monitor/app.json
+then
+    sudo systemctl stop ewf-tobalaba-authority@ewf.service
+    docker pull parity/parity:v1.11.8
+    sudo systemctl start ewf-tobalaba-authority@ewf.service
+fi
 
 echo "$(date)" > ../authority_node/latest_update
  
