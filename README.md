@@ -72,7 +72,7 @@ $ cd tobalaba
 
 $ git clone https://github.com/energywebfoundation/authority-node.git
 
-$ cd ewf-tobalaba
+$ cd authority-node
 ```
 
 ### 3b. Install Dependencies
