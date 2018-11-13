@@ -250,9 +250,9 @@ done
 #     sudo systemctl start ewf-tobalaba-authority@ewf.service
 #fi
 
-# sudo systemctl stop ewf-tobalaba-authority@ewf.service
+sudo systemctl stop ewf-tobalaba-authority@ewf.service
 # docker pull parity/parity:nightly
-# sudo systemctl start ewf-tobalaba-authority@ewf.service
+sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # if grep 'TWL' ../authority_node/monitor/app.json
 # then
