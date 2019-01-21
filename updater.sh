@@ -267,8 +267,8 @@ done
 
 if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
 then
-    cp ../authority_node/monitor/app.json ../authority_node/monitor/app.json.bak-20190121_2
-    cp ../authority_node/monitor/app.json.bak-20190121 ../authority_node/monitor/app.json
+    cp ./skel/authority.yml ../authority_node/docker-compose.yml
+    
     sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"46.38.232.222\:8080",/' ../authority_node/monitor/app.json
     sudo systemctl restart ewf-tobalaba-authority@ewf.service
 fi
