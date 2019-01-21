@@ -16,7 +16,7 @@
       "LISTENING_PORT"  : "30303",
       "INSTANCE_NAME"   : "Test - Please change",
       "CONTACT_DETAILS" : "test@ewf.org - Please change",
-      "WS_SERVER"       : "ws://46.38.232.222:8080",
+      "WS_SERVER"       : "46.38.232.222:8080",
       "WS_SECRET"       : "0k8H6F4s",
       "VERBOSITY"       : 3
     }
