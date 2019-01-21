@@ -250,9 +250,9 @@ done
 #     sudo systemctl start ewf-tobalaba-authority@ewf.service
 #fi
 
-sudo systemctl stop ewf-tobalaba-authority@ewf.service
+#sudo systemctl stop ewf-tobalaba-authority@ewf.service
 # docker pull parity/parity:nightly
-sudo systemctl start ewf-tobalaba-authority@ewf.service
+#sudo systemctl start ewf-tobalaba-authority@ewf.service
 
 # if grep 'TWL' ../authority_node/monitor/app.json
 # then
@@ -260,6 +260,20 @@ sudo systemctl start ewf-tobalaba-authority@ewf.service
 #     cp ./skel/authority.yml ../authority_node/docker-compose.yml
 #     sudo systemctl start ewf-tobalaba-authority@ewf.service
 # fi
+
+### 2019-01-21 Update Netstats to Slock.it Infrastructure
+
+# Update host in eth-netstats.json
+
+if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
+then
+    cp ../authority_node/monitor/app.json ../authority_node/monitor/app.json.bak-20190121
+    sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"ws\:\/\/46.38.232.222\:8080",/' ../authority_node/monitor/app.json
+    sudo systemctl restart ewf-tobalaba-authority@ewf.service
+fi
+
+
+### UPDATE END
 
 echo "$(date)" > ../authority_node/latest_update
  
