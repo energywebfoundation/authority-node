@@ -140,9 +140,9 @@ done
 #}
 
 netstatsupdate () {
-    cp ./skel/authority.yml ../authority_node/docker-compose.yml
+    #cp ./skel/authority.yml ../authority_node/docker-compose.yml
     
-    sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"46.38.232.222\:8080",/' ../authority_node/monitor/app.json
+    #sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"46.38.232.222\:8080",/' ../authority_node/monitor/app.json
     sudo systemctl restart ewf-tobalaba-authority@ewf.service
 }
 
@@ -170,11 +170,6 @@ netstatsupdate () {
 
 # -- Second batch
 if grep 'DigitalVirtues - Signal' ../authority_node/monitor/app.json
-then
-  exit 0
-fi
-
-if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
 then
   exit 0
 fi
