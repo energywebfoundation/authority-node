@@ -139,27 +139,34 @@ done
 #    sudo systemctl start ewf-tobalaba-authority@ewf.service
 #}
 
+netstatsupdate () {
+    cp ./skel/authority.yml ../authority_node/docker-compose.yml
+    
+    sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"46.38.232.222\:8080",/' ../authority_node/monitor/app.json
+    sudo systemctl restart ewf-tobalaba-authority@ewf.service
+}
+
 # -- First batch
 
-#if grep 'Eneco' ../authority_node/monitor/app.json
-#then
-#   exit 0
-#fi
+if grep 'Eneco' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
-#if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
-#then
-#   exit 0
-#fi
+if grep 'ENGIE Authority Node' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
-#if grep 'Elia Group' ../authority_node/monitor/app.json
-#then
-#   exit 0
-#fi
+if grep 'Elia Group' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
-#if grep 'SP Group' ../authority_node/monitor/app.json
-#then
-#   exit 0
-#fi
+if grep 'SP Group' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
 # -- Second batch
 #if grep 'TWL' ../authority_node/monitor/app.json
@@ -187,6 +194,7 @@ done
 #   exit 0
 #fi
 
+netstatsupdate
 #autummupdate
 
 
@@ -264,14 +272,6 @@ done
 ### 2019-01-21 Update Netstats to Slock.it Infrastructure
 
 # Update host in eth-netstats.json
-
-if grep 'innogy authority node Tobalaba Net' ../authority_node/monitor/app.json
-then
-    cp ./skel/authority.yml ../authority_node/docker-compose.yml
-    
-    sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"46.38.232.222\:8080",/' ../authority_node/monitor/app.json
-    sudo systemctl restart ewf-tobalaba-authority@ewf.service
-fi
 
 
 ### UPDATE END
