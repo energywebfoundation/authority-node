@@ -2,7 +2,7 @@ version: '2.0'
 services:
 
   node:
-    image: parity/parity:v2.2.3
+    image: parity/parity:v2.3.3
     restart: always
     command:
       --config /parity/config/authority.toml
