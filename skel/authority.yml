@@ -2,14 +2,14 @@ version: '2.0'
 services:
 
   node:
-    image: parity/parity:v1.11.8
+    image: parity/parity:v2.2.3
     restart: always
     command:
       --config /parity/config/authority.toml
       --nat extip:${EXTERNAL_IP}
     volumes:
       - ./config:/parity/config:ro
-      - ./chain:/root/.local/share/io.parity.ethereum/
+      - ./chain:/home/parity/.local/share/io.parity.ethereum/
       - ./.secret:/parity/authority.pwd:ro
     ports:
       - 30303:30303 

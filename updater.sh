@@ -139,12 +139,45 @@ done
 #    sudo systemctl start ewf-tobalaba-authority@ewf.service
 #}
 
-netstatsupdate () {
-    #cp ./skel/authority.yml ../authority_node/docker-compose.yml
+#netstatsupdate () {
+#    #cp ./skel/authority.yml ../authority_node/docker-compose.yml
+#    
+#    #sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"46.38.232.222\:8080",/' ../authority_node/monitor/app.json
+#    sudo systemctl restart ewf-tobalaba-authority@ewf.service
+#}
+
+
+parityupdate () {
+    # pull new docker image
+    sudo docker pull parity/parity:v2.3.3
+
+    # stop node
+    sudo systemctl stop ewf-tobalaba-authority@ewf.service
+
+    # copy new config file
+    # Copy new toml with txqueue settings
+    MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+    cp ../authority_node/config/authority.toml ../authority_node/config/authority.toml.bak
+    cp ./config/authority-for-2.toml ../authority_node/config/authority.toml
+    echo "${MINER}" >> ../authority_node/config/authority.toml
+
+    # Copy new compose file
+    cp ./skel/authority.yml ../authority_node/docker-compose.yml
+
+    # Fix permissions on chain folder - not pretty but should work.
+    chmod -R 777 ../authority_node/chain
     
-    #sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"46.38.232.222\:8080",/' ../authority_node/monitor/app.json
-    sudo systemctl restart ewf-tobalaba-authority@ewf.service
+    # start node
+    sudo systemctl start ewf-tobalaba-authority@ewf.service
 }
+
+if grep 'Centrica' ../authority_node/monitor/app.json
+then
+  parityupdate
+  exit 0
+fi
+
+
 
 # -- First batch
 
@@ -158,20 +191,20 @@ netstatsupdate () {
 #    exit 0
 # fi
 
-if grep 'Elia Group' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'Elia Group' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-if grep 'GridSingularity' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'GridSingularity' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
-if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
 # -- Second batch
 #if grep 'DigitalVirtues - Signal' ../authority_node/monitor/app.json
@@ -184,17 +217,13 @@ fi
 #  exit 0
 #fi
 
-#if grep 'Centrica' ../authority_node/monitor/app.json
-#then
-#  exit 0
-#fi
 
 #if grep 'ENERVALIS' ../authority_node/monitor/app.json
 #then
 #  exit 0
 #fi
 
-netstatsupdate
+#netstatsupdate
 #autummupdate
 
 
