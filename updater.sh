@@ -177,6 +177,17 @@ then
   exit 0
 fi
 
+if grep 'Elia Group' ../authority_node/monitor/app.json
+then
+   parityupdate
+   exit 0
+fi
+
+if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
+then
+   parityupdate
+   exit 0
+fi
 
 
 # -- First batch
@@ -191,20 +202,12 @@ fi
 #    exit 0
 # fi
 
-#if grep 'Elia Group' ../authority_node/monitor/app.json
-#then
-#   exit 0
-#fi
 
 #if grep 'GridSingularity' ../authority_node/monitor/app.json
 #then
 #   exit 0
 #fi
 
-#if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
-#then
-#   exit 0
-#fi
 
 # -- Second batch
 #if grep 'DigitalVirtues - Signal' ../authority_node/monitor/app.json
