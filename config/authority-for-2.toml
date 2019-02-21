@@ -1,0 +1,113 @@
+[parity]
+chain = "tobalaba"
+base_path = "/home/parity/.local/share/io.parity.ethereum"
+db_path = "/home/parity/.local/share/io.parity.ethereum/chains"
+keys_path = "/home/parity/.local/share/io.parity.ethereum/keys"
+identity = ""
+light = false
+mode = "last"
+mode_timeout = 300
+mode_alarm = 3600
+auto_update = "none"
+release_track = "current"
+public_node = false
+no_download = false
+no_consensus = false
+no_persistent_txqueue = false
+
+[ui]
+force = false
+disable = true
+port = 8180
+interface = "0.0.0.0"
+path = "/home/parity/.local/share/io.parity.ethereum/signer"
+
+[rpc]
+disable = false
+port = 8545
+interface = "0.0.0.0"
+cors = []
+apis = ["web3", "eth", "net", "parity", "traces", "rpc", "secretstore"]
+hosts = ["none"]
+
+[websockets]
+disable = false
+port = 8546
+interface = "0.0.0.0"
+origins = ["none"]
+apis = ["web3", "eth", "net", "parity", "traces", "rpc", "secretstore"]
+hosts = ["none"]
+
+[ipc]
+disable = true
+path = "/home/parity/.local/share/io.parity.ethereum/jsonrpc.ipc"
+apis = ["web3", "eth", "net", "parity", "parity_accounts", "personal", "traces", "rpc", "secretstore"]
+
+
+[secretstore]
+disable = false
+nodes = []
+http_interface = "0.0.0.0"
+http_port = 8082
+interface = "0.0.0.0"
+port = 8083
+path = "/home/parity/.local/share/io.parity.ethereum/secretstore"
+
+[ipfs]
+enable = false
+port = 5001
+interface = "0.0.0.0"
+cors = []
+hosts = ["none"]
+
+[network]
+port = 30303
+min_peers = 25
+max_peers = 50
+nat = "any"
+discovery = true
+warp = true
+allow_ips = "all"
+snapshot_peers = 0
+max_pending_peers = 64
+no_serve_light = false
+reserved_only = false
+bootnodes = ["enode://147573f46fe9f5cc38fbe070089a31390baec5dd2827c8f2ef168833e4d0254fbee3969a02c5b9910ea5d5b23d86a6ed5eabcda17cc12007b7d9178b6c697aa5@ewf.slock.it:30303"]
+reserved_peers = "/parity/config/enodeList.list"
+
+[account]
+password = ["/parity/authority.pwd"]
+keys_iterations = 10240
+
+[footprint]
+tracing = "auto"
+pruning = "auto"
+pruning_history = 64
+pruning_memory = 500
+cache_size_db = 64
+cache_size_blocks = 8
+cache_size_queue = 50
+cache_size_state = 25
+cache_size = 128 # Overrides above caches with total size
+fast_and_loose = false
+db_compaction = "ssd"
+fat_db = "auto"
+scale_verifiers = true
+num_verifiers = 6
+
+[snapshots]
+disable_periodic = false
+
+[misc]
+logging = "own_tx=trace"
+color = true
+
+[mining]
+force_sealing = true
+usd_per_tx = "0.000000000000000001"
+usd_per_eth = "1"
+price_update_period = "hourly"
+gas_cap = "800000000"
+gas_floor_target = "80000000"
+tx_gas_limit = "80000000"
+extra_data = "Parity"
