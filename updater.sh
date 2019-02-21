@@ -173,21 +173,21 @@ parityupdate () {
 
 if grep 'Centrica' ../authority_node/monitor/app.json
 then
-  parityupdate
   exit 0
 fi
 
 if grep 'Elia Group' ../authority_node/monitor/app.json
 then
-   parityupdate
    exit 0
 fi
 
 if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
 then
-   parityupdate
    exit 0
 fi
+
+# update all the other nodes
+parityupdate
 
 
 # -- First batch
