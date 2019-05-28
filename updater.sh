@@ -139,55 +139,55 @@ done
 #    sudo systemctl start ewf-tobalaba-authority@ewf.service
 #}
 
-#netstatsupdate () {
+netstatsupdate () {
 #    #cp ./skel/authority.yml ../authority_node/docker-compose.yml
 #    
-#    #sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"46.38.232.222\:8080",/' ../authority_node/monitor/app.json
-#    sudo systemctl restart ewf-tobalaba-authority@ewf.service
-#}
-
-
-parityupdate () {
-    # pull new docker image
-    sudo docker pull parity/parity:v2.3.3
-
-    # stop node
-    sudo systemctl stop ewf-tobalaba-authority@ewf.service
-
-    # copy new config file
-    # Copy new toml with txqueue settings
-    MINER=$(tail -n 1 ../authority_node/config/authority.toml)
-    cp ../authority_node/config/authority.toml ../authority_node/config/authority.toml.bak
-    cp ./config/authority-for-2.toml ../authority_node/config/authority.toml
-    echo "${MINER}" >> ../authority_node/config/authority.toml
-
-    # Copy new compose file
-    cp ./skel/authority.yml ../authority_node/docker-compose.yml
-
-    # Fix permissions on chain folder - not pretty but should work.
-    chmod -R 777 ../authority_node/chain
-    
-    # start node
-    sudo systemctl start ewf-tobalaba-authority@ewf.service
+    sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"35.181.140.255\:8080",/' ../authority_node/monitor/app.json
+    sudo systemctl restart ewf-tobalaba-authority@ewf.service
 }
 
-if grep 'Centrica' ../authority_node/monitor/app.json
-then
-  exit 0
-fi
 
-if grep 'Elia Group' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+#parityupdate () {
+#    # pull new docker image
+#    sudo docker pull parity/parity:v2.3.3
+#
+#    # stop node
+#    sudo systemctl stop ewf-tobalaba-authority@ewf.service
+#
+    # copy new config file
+    # Copy new toml with txqueue settings
+#    MINER=$(tail -n 1 ../authority_node/config/authority.toml)
+#    cp ../authority_node/config/authority.toml ../authority_node/config/authority.toml.bak
+#    cp ./config/authority-for-2.toml ../authority_node/config/authority.toml
+#    echo "${MINER}" >> ../authority_node/config/authority.toml
 
-if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
-then
-   exit 0
-fi
+    # Copy new compose file
+#    cp ./skel/authority.yml ../authority_node/docker-compose.yml
+
+    # Fix permissions on chain folder - not pretty but should work.
+#    chmod -R 777 ../authority_node/chain
+    
+    # start node
+#    sudo systemctl start ewf-tobalaba-authority@ewf.service
+#}
+
+#if grep 'Centrica' ../authority_node/monitor/app.json
+#then
+#  exit 0
+#fi
+
+#if grep 'Elia Group' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
+
+#if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
+#then
+#   exit 0
+#fi
 
 # update all the other nodes
-parityupdate
+#parityupdate
 
 
 # -- First batch
@@ -228,8 +228,14 @@ parityupdate
 
 #netstatsupdate
 #autummupdate
+if grep 'Test' ../authority_node/monitor/app.json
+then
+  netstatsupdate
+  echo "$(date)" > ../authority_node/latest_update
+  exit 0
+fi
 
-
+exit 0
 # --- tobalaba rescue attack machine
 # if grep 'Eneco' ../authority_node/monitor/app.json
 # then
