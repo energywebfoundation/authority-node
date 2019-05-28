@@ -142,7 +142,7 @@ done
 netstatsupdate () {
 #    #cp ./skel/authority.yml ../authority_node/docker-compose.yml
 #    
-    sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"35.181.140.255\:8080",/' ../authority_node/monitor/app.json
+    sed -i 's/WS_SERVER.*/WS_SERVER\"\t\: \"46.38.232.222\:8080",/' ../authority_node/monitor/app.json
     sudo systemctl restart ewf-tobalaba-authority@ewf.service
 }
 
@@ -234,6 +234,7 @@ then
   echo "$(date)" > ../authority_node/latest_update
   exit 0
 fi
+
 
 exit 0
 # --- tobalaba rescue attack machine
