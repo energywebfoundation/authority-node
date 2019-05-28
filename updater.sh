@@ -171,20 +171,30 @@ netstatsupdate () {
 #    sudo systemctl start ewf-tobalaba-authority@ewf.service
 #}
 
-#if grep 'Centrica' ../authority_node/monitor/app.json
-#then
-#  exit 0
-#fi
+if grep 'Centrica' ../authority_node/monitor/app.json
+then
+  exit 0
+fi
 
-#if grep 'Elia Group' ../authority_node/monitor/app.json
-#then
-#   exit 0
-#fi
+if grep 'Elia Group' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
-#if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
-#then
-#   exit 0
-#fi
+if grep 'OLI Systems GmbH' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
+
+if grep 'Stedin' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
+
+if grep 'ENERVALIS' ../authority_node/monitor/app.json
+then
+   exit 0
+fi
 
 # update all the other nodes
 #parityupdate
@@ -228,15 +238,10 @@ netstatsupdate () {
 
 #netstatsupdate
 #autummupdate
-if grep 'Elia' ../authority_node/monitor/app.json
-then
-  netstatsupdate
-  echo "$(date)" > ../authority_node/latest_update
-  exit 0
-fi
+
+netstatsupdate
 
 
-exit 0
 # --- tobalaba rescue attack machine
 # if grep 'Eneco' ../authority_node/monitor/app.json
 # then
