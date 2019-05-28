@@ -228,10 +228,10 @@ netstatsupdate () {
 
 #netstatsupdate
 #autummupdate
-if grep ‘Test’ ../authority_node/monitor/app.json
+if grep 'Test' ../authority_node/monitor/app.json
 then
   netstatsupdate
-  echo “$(date)” > ../authority_node/latest_update
+  echo "$(date)" > ../authority_node/latest_update
   exit 0
 fi
 
