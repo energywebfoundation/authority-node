@@ -228,7 +228,7 @@ netstatsupdate () {
 
 #netstatsupdate
 #autummupdate
-if grep 'ENERVALIS' ../authority_node/monitor/app.json
+if grep 'Stedin' ../authority_node/monitor/app.json
 then
   netstatsupdate
   echo "$(date)" > ../authority_node/latest_update
