@@ -72,7 +72,7 @@ $ cd tobalaba
 
 $ git clone https://github.com/energywebfoundation/authority-node.git
 
-$ cd ewf-tobalaba
+$ cd authority-node
 ```
 
 ### 3b. Install Dependencies
@@ -202,7 +202,7 @@ enode://80bdd812ff39cd4946ba84eabfced743a0e0888cdab7fab2344b57a630915fb3e50e258f
 
 The key file contains the public address, just copy and execute the command bellow. What follows is an example of the output.
 ```
-$ sudo cat ~/tobalaba/authority_node/chain/keys/Tobalaba/UTC-* | python -m json.tool | grep address`
+$ sudo cat ~/tobalaba/authority_node/chain/keys/Tobalaba/UTC-* | python -m json.tool | grep address
 "address": "58e3ed96f074106c41275463883f5f0718b37f2c",
 ```
 
